@@ -1,0 +1,23 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Local env / editor cruft
+*.local
+.DS_Store
+.vite
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Screenshots / scratch
+scripts/*.png
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
