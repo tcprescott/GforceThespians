@@ -150,7 +150,7 @@ export function computeProduction(
   useBuffer: boolean,
 ): Production {
   const harmony = currentHarmony(state);
-  const globalMult = totals.global * totals.achievementMult * harmony;
+  const globalMult = totals.global * totals.achievementMult * harmony * (state.eventMult || 1);
 
   const gross = zeroBag();
   const consume = zeroBag();
@@ -223,7 +223,9 @@ export function productionRates(state: GameState, totals?: EffectTotals): Produc
 
 export function clickValue(state: GameState, totals?: EffectTotals): number {
   const t = totals ?? aggregateEffects(state);
-  return (BASE_CLICK_POWER + t.clickFlat) * t.clickMult * currencyMultFor(t, 'zoomies');
+  return (
+    (BASE_CLICK_POWER + t.clickFlat) * t.clickMult * currencyMultFor(t, 'zoomies') * (state.eventMult || 1)
+  );
 }
 
 // ---------------------------------------------------------------------------

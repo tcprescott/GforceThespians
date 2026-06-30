@@ -47,6 +47,12 @@ export interface GameState {
   nextLogId: number;
   /** Epoch ms when the state was last "seen" (for offline progress). */
   lastSeen: number;
+  /**
+   * Transient global multiplier from a currently-active "Cats Improvise" event
+   * (1 = none). Set by the store during active play; the pure engine only reads
+   * it, so the simulator (which never sets it) stays deterministic. Not persisted.
+   */
+  eventMult: number;
 }
 
 export const MAX_LOG_ENTRIES = 140;
@@ -126,6 +132,7 @@ export function freshRunState(persistent: Persistent, now: number): GameState {
     log: persistent.log,
     nextLogId: persistent.nextLogId,
     lastSeen: now,
+    eventMult: 1,
   };
 }
 

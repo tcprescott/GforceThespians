@@ -5,6 +5,7 @@ import { canPrestige } from './game/engine';
 import { PHASE_META } from './game/content';
 import { accentFor } from './components/theme';
 import { CurrencyBar } from './components/CurrencyBar';
+import { EventBanner } from './components/EventBanner';
 import { Stage } from './components/Stage';
 import { Backstage } from './components/Backstage';
 import { UpgradesPanel } from './components/UpgradesPanel';
@@ -70,6 +71,7 @@ export default function App() {
       </header>
 
       <CurrencyBar />
+      <EventBanner />
 
       <main className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 gap-4 p-4 lg:grid-cols-[19rem_minmax(0,1fr)_21rem]">
         {/* Left — The Stage */}

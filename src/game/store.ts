@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { AutoRule } from './types';
+import type { ActiveEvent } from './content/events';
+import {
+  EVENTS,
+  EVENT_FIRST_GAP_SECONDS,
+  EVENT_MAX_GAP_SECONDS,
+  EVENT_MIN_GAP_SECONDS,
+} from './content/events';
 import type { GameState } from './state';
 import { createInitialState, zeroBag } from './state';
 import {
@@ -26,6 +33,10 @@ export interface GameStore extends GameState {
   offlineSummary: OfflineSummary;
   /** UI: how many units a generator's Buy button purchases. */
   buyMode: BuyMode;
+  /** The currently-running "Cats Improvise" event, if any. */
+  activeEvent: ActiveEvent | null;
+  /** Epoch ms when the next event may fire. */
+  nextEventAt: number;
 
   // Actions
   dispatch: () => void;
@@ -47,6 +58,31 @@ export interface GameStore extends GameState {
 }
 
 const now = () => Date.now();
+
+const randomEventGap = () =>
+  (EVENT_MIN_GAP_SECONDS + Math.random() * (EVENT_MAX_GAP_SECONDS - EVENT_MIN_GAP_SECONDS)) * 1000;
+
+/**
+ * Random-event scheduler (active play only). Returns the event-field changes to
+ * apply this tick, or null for no change. Lives in the store (uses Math.random)
+ * so the pure engine + simulator remain deterministic.
+ */
+function scheduleEvents(
+  s: GameStore,
+  t: number,
+): Partial<GameStore> | null {
+  if (s.activeEvent) {
+    if (t >= s.activeEvent.until) {
+      return { activeEvent: null, eventMult: 1, nextEventAt: t + randomEventGap() };
+    }
+    return null; // still running
+  }
+  if (t >= s.nextEventAt) {
+    const ev = EVENTS[Math.floor(Math.random() * EVENTS.length)];
+    return { activeEvent: { ...ev, until: t + ev.durationSeconds * 1000 }, eventMult: ev.mult };
+  }
+  return null;
+}
 
 /** Heal a persisted blob into a complete, valid GameState (guards schema drift). */
 function sanitize(p: Partial<GameState> | undefined, t: number): GameState {
@@ -75,6 +111,7 @@ function sanitize(p: Partial<GameState> | undefined, t: number): GameState {
     log: p.log && p.log.length ? p.log : fresh.log,
     nextLogId: p.nextLogId ?? fresh.nextLogId,
     lastSeen: p.lastSeen ?? t,
+    eventMult: 1, // never restore a buff from a save
   };
 }
 
@@ -84,6 +121,8 @@ export const useGameStore = create<GameStore>()(
       ...createInitialState(now()),
       offlineSummary: null,
       buyMode: 1 as BuyMode,
+      activeEvent: null,
+      nextEventAt: now() + EVENT_FIRST_GAP_SECONDS * 1000,
 
       dispatch: () => set((s) => dispatchCoaster(s)),
       buyGen: (id, count = 1) => set((s) => buyGenerator(s, id, count)),
@@ -102,10 +141,22 @@ export const useGameStore = create<GameStore>()(
           return { autoRules: { ...s.autoRules, [id]: { ...existing, ...rule } } };
         }),
 
-      tick: (dt) => set((s) => engineTick(s, dt, now())),
+      tick: (dt) =>
+        set((s) => {
+          const t = now();
+          const evt = scheduleEvents(s, t);
+          const base = evt ? { ...s, ...evt } : s;
+          return engineTick(base, dt, t);
+        }),
 
       dismissOffline: () => set({ offlineSummary: null }),
-      hardReset: () => set({ ...createInitialState(now()), offlineSummary: null }),
+      hardReset: () =>
+        set({
+          ...createInitialState(now()),
+          offlineSummary: null,
+          activeEvent: null,
+          nextEventAt: now() + EVENT_FIRST_GAP_SECONDS * 1000,
+        }),
 
       // Unicode-safe base64 of the persisted data — portable across browsers.
       exportSave: () => {

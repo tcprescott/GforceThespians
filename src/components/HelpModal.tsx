@@ -36,6 +36,11 @@ export function HelpModal({ onClose }: { onClose: () => void }) {
             and automation. You come back to Act One stronger — and the walls rise to match.
           </li>
           <li>
+            <span className="font-bold text-fuchsia-300">🌿 The cats improvise.</span> While you
+            play, surprise events strike — a Catnip Frenzy, a Golden Coaster — temporarily
+            multiplying everything. Watch the banner up top.
+          </li>
+          <li>
             <span className="font-bold text-zinc-100">🌙 Marathon idle.</span> Progress is slow and
             steady by design. Close the tab and come back — the cats keep performing, and you'll be
             credited for time away.
