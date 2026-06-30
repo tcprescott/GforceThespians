@@ -110,12 +110,12 @@ in `src/game/balance.ts` (`GLOBAL_COST_GROWTH_ADD`, `GLOBAL_OUTPUT_SCALE`,
 
 ## Deploying to GitHub Pages
 
-`.github/workflows/deploy.yml` builds and deploys on every push to `main`.
-One-time setup:
-
-1. Push to GitHub and merge to `main`.
-2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Publishes to **https://tcprescott.github.io/GforceThespians/**.
+`.github/workflows/deploy.yml` builds and deploys on every push to `main` or
+the active dev branch. **One required manual step** (the workflow token can't do
+it automatically): repo **Settings → Pages → Build and deployment → Source:
+"GitHub Actions"**. After that, the next push deploys automatically to
+**https://tcprescott.github.io/GforceThespians/**. (Until Pages is enabled, the
+deploy job fails at "Setup Pages" — that's expected.)
 
 The Vite `base` is `/GforceThespians/` for production builds only (local dev
 stays at `/`). If the repo is renamed, update `base` in `vite.config.ts` and
