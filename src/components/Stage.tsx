@@ -1,9 +1,16 @@
+import { useEffect, useRef, useState } from 'react';
 import { useGameStore } from '../game/store';
 import { aggregateEffects } from '../game/effects';
 import { clickValue, currentHarmony, hasAutomation, productionRates } from '../game/engine';
 import { CURRENCY_META } from '../game/content';
 import { formatNumber, formatRate } from '../lib/format';
 import { HarmonyMeter } from './HarmonyMeter';
+
+interface Pop {
+  id: number;
+  value: number;
+  x: number;
+}
 
 /** Left column — The Stage: the big satisfying numbers and the Dispatch action. */
 export function Stage() {
@@ -13,6 +20,30 @@ export function Stage() {
   const rates = productionRates(state, totals).net;
   const click = clickValue(state, totals);
   const autoOn = state.autoDispatch && hasAutomation(state, 'auto-dispatch');
+
+  // Floating "+N" feedback.
+  const [pops, setPops] = useState<Pop[]>([]);
+  const popId = useRef(0);
+  const onDispatch = () => {
+    dispatch();
+    const id = popId.current++;
+    setPops((p) => [...p, { id, value: click, x: 30 + Math.random() * 40 }]);
+    window.setTimeout(() => setPops((p) => p.filter((x) => x.id !== id)), 900);
+  };
+
+  // Spacebar = Dispatch (unless typing in a field).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code !== 'Space') return;
+      const el = document.activeElement;
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) return;
+      e.preventDefault();
+      onDispatch();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [click]);
 
   return (
     <section className="flex flex-col gap-5 rounded-2xl border border-amber-500/20 bg-zinc-900/60 p-6 backdrop-blur">
@@ -49,16 +80,27 @@ export function Stage() {
       </div>
 
       {/* Dispatch */}
-      <button
-        onClick={dispatch}
-        className="group relative mt-1 select-none rounded-2xl bg-gradient-to-b from-amber-400 to-amber-600 px-6 py-7 text-center text-2xl font-black uppercase tracking-wide text-amber-950 shadow-lg shadow-amber-900/40 transition-transform duration-75 hover:from-amber-300 hover:to-amber-500 active:scale-95"
-      >
-        <span className="block text-4xl transition-transform group-active:translate-y-0.5">🎢</span>
-        Dispatch Coaster!
-        <span className="mt-1 block text-sm font-semibold normal-case tracking-normal text-amber-900/80">
-          +{formatNumber(click)} zoomies / launch
-        </span>
-      </button>
+      <div className="relative mt-1">
+        {pops.map((p) => (
+          <span
+            key={p.id}
+            className="float-up pointer-events-none absolute top-2 z-10 text-lg font-black text-amber-200 drop-shadow"
+            style={{ left: `${p.x}%` }}
+          >
+            +{formatNumber(p.value)}
+          </span>
+        ))}
+        <button
+          onClick={onDispatch}
+          className="group relative w-full select-none rounded-2xl bg-gradient-to-b from-amber-400 to-amber-600 px-6 py-7 text-center text-2xl font-black uppercase tracking-wide text-amber-950 shadow-lg shadow-amber-900/40 transition-transform duration-75 hover:from-amber-300 hover:to-amber-500 active:scale-95"
+        >
+          <span className="block text-4xl transition-transform group-active:translate-y-0.5">🎢</span>
+          Dispatch Coaster!
+          <span className="mt-1 block text-sm font-semibold normal-case tracking-normal text-amber-900/80">
+            +{formatNumber(click)} zoomies / launch · or press Space
+          </span>
+        </button>
+      </div>
 
       {autoOn && (
         <div className="-mt-2 text-center text-xs text-emerald-400/90">

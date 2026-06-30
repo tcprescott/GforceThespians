@@ -1,9 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Deploy whenever the default branch updates.
+  # Deploy on the default branch and on the active dev branch, so the site
+  # publishes "as we develop" the moment Pages is enabled.
   push:
-    branches: [main]
+    branches: [main, claude/gforce-thespians-mvp-icefhq]
   # ...and allow manual runs from the Actions tab.
   workflow_dispatch:
 
@@ -21,6 +22,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Playwright is a dev-only test dependency; skip its browser download so it
+    # never slows or breaks the deploy build.
+    env:
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
