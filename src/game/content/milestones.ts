@@ -59,11 +59,6 @@ export const MILESTONES: Milestone[] = [
     text: 'The cats hold a high C into the event horizon. Spacetime holds its breath. Somewhere, a critic weeps.',
   },
   {
-    id: 'm-prestige-ready',
-    condition: { kind: 'lifetime', currency: 'moonlight', amount: 3e4 },
-    text: 'You understand now how the show ends — and that you could choose to end it, and begin again, stronger. The Director’s Cut beckons.',
-  },
-  {
     id: 'm-first-prestige',
     condition: { kind: 'prestiges', amount: 1 },
     text: 'Reality strikes its set. The cats bow to an empty house, pocket their Rider Credits, and walk back to Act One — wiser, and unmistakably the same cats.',
@@ -114,5 +109,25 @@ export const MILESTONES: Milestone[] = [
     id: 'm-prestige-10',
     condition: { kind: 'prestiges', amount: 10 },
     text: 'Ten Director’s Cuts. You have ended the universe ten times and apologized exactly zero. The cats respect this.',
+  },
+  {
+    id: 'm-echo-first',
+    condition: { kind: 'lifetime', currency: 'echoes', amount: 1 },
+    text: 'The first Echo rings out — the show hearing itself for the very first time. It likes what it hears. It hears what it likes.',
+  },
+  {
+    id: 'm-fourth-wall',
+    condition: { kind: 'owned', generator: 'p5-fourth-wall', amount: 1 },
+    text: 'A cat turns, looks directly at you, and winks. You have never felt so seen by something so cardboard.',
+  },
+  {
+    id: 'm-ouroboros',
+    condition: { kind: 'owned', generator: 'p5-ouroboros-coaster', amount: 1 },
+    text: 'The Ouroboros Coaster swallows its own tail and, impossibly, accelerates. The production is now infinite and aware. Hello.',
+  },
+  {
+    id: 'm-echo-million',
+    condition: { kind: 'lifetime', currency: 'echoes', amount: 1e6 },
+    text: 'A million Echoes. The theatre, the cats, the moon, and you are all the same recurring thought now. It is a very good thought.',
   },
 ];

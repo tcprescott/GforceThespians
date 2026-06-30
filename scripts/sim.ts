@@ -46,6 +46,7 @@ const VALUE: Record<CurrencyId, number> = {
   gforce: 50,
   tension: 50,
   moonlight: 3000,
+  echoes: 5e5,
   riderCredits: 0,
 };
 
@@ -63,6 +64,7 @@ const PREFERRED_FORK: Record<string, string> = {
   'p2-logistics': 'p2-log-stockpile',
   'p3-physics': 'p3-phys-equilibrium',
   'p4-destiny': 'p4-dest-resonant',
+  'p5-meta': 'p5-meta-balance',
 };
 
 function fmtTime(sec: number): string {
@@ -91,7 +93,7 @@ function buyUpgrades(s: GameState): GameState {
 
 /** Keep fuel currencies non-negative by buying their best producers. */
 function fuelGuard(s: GameState): GameState {
-  const fuels: CurrencyId[] = ['kibble'];
+  const fuels: CurrencyId[] = ['kibble', 'moonlight'];
   for (const fuel of fuels) {
     for (let i = 0; i < 25; i++) {
       const net = productionRates(s).net[fuel];

@@ -14,6 +14,7 @@ import {
   MILESTONES,
   PHASES,
   PHASE_META,
+  PRESTIGE_PHASE,
   TALENT_META,
   UPGRADE_META,
 } from './content';
@@ -518,7 +519,7 @@ export function prestigePending(state: GameState, totals?: EffectTotals): number
 }
 
 export function canPrestige(state: GameState): boolean {
-  return state.phaseUnlocked >= 5 && prestigePending(state) > 0;
+  return state.phaseUnlocked >= PRESTIGE_PHASE && prestigePending(state) > 0;
 }
 
 export function doPrestige(state: GameState, now: number): GameState {

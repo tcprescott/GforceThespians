@@ -694,6 +694,79 @@ export const UPGRADES: UpgradeDef[] = [
     exclusiveGroup: 'p4-destiny',
     forkLabel: 'Final Destiny',
   },
+
+  // === Phase 5: The Ouroboros ============================================
+  {
+    id: 'p5-up-silvering',
+    name: 'Fresh Silvering',
+    description: 'Halls of Mirrors ×3. The reflections go deeper, and deeper, and—',
+    phase: 5,
+    cost: { echoes: 5000 },
+    effects: [{ kind: 'genMult', target: 'p5-hall-of-mirrors', factor: 3 }],
+  },
+  {
+    id: 'p5-up-recursion-depth',
+    name: 'Stack Depth Unlimited',
+    description: 'Infinite Encores ×4. The base case was a lie.',
+    phase: 5,
+    cost: { echoes: 12000 },
+    effects: [{ kind: 'genMult', target: 'p5-infinite-encore', factor: 4 }],
+  },
+  {
+    id: 'p5-up-echo-amp',
+    name: 'Echo Amplifier',
+    description: 'Echoes ×2.5. Say it once; hear it forever.',
+    phase: 5,
+    cost: { echoes: 4000 },
+    effects: [{ kind: 'currencyMult', currency: 'echoes', factor: 2.5 }],
+  },
+  {
+    id: 'p5-up-meta-budget',
+    name: 'Unlimited Production Budget',
+    description: 'ALL production ×2. The show about the show has an excellent producer (you).',
+    phase: 5,
+    cost: { zoomies: 1e20 },
+    effects: [{ kind: 'globalMult', factor: 2 }],
+  },
+  // Phase 5: The Meta-Question (fork)
+  {
+    id: 'p5-meta-loop',
+    name: 'Meta: Embrace the Loop',
+    description: 'Echoes ×3 — but recursion is expensive (all costs ×1.2). Lean all the way in.',
+    phase: 5,
+    cost: { echoes: 3000 },
+    effects: [
+      { kind: 'currencyMult', currency: 'echoes', factor: 3 },
+      { kind: 'costMult', target: 'all', factor: 1.2 },
+    ],
+    exclusiveGroup: 'p5-meta',
+    forkLabel: 'The Meta-Question',
+    tradeoff: true,
+  },
+  {
+    id: 'p5-meta-break',
+    name: 'Meta: Break the Cycle',
+    description: 'All generators ×2.2 — but you stop reflecting (Echoes ×0.85). Forward, not inward.',
+    phase: 5,
+    cost: { echoes: 3000 },
+    effects: [
+      { kind: 'genMult', target: 'all', factor: 2.2 },
+      { kind: 'currencyMult', currency: 'echoes', factor: 0.85 },
+    ],
+    exclusiveGroup: 'p5-meta',
+    forkLabel: 'The Meta-Question',
+    tradeoff: true,
+  },
+  {
+    id: 'p5-meta-balance',
+    name: 'Meta: Hold the Mirror Steady',
+    description: 'ALL production ×1.6. Neither in nor out — simply more.',
+    phase: 5,
+    cost: { echoes: 3000 },
+    effects: [{ kind: 'globalMult', factor: 1.6 }],
+    exclusiveGroup: 'p5-meta',
+    forkLabel: 'The Meta-Question',
+  },
 ];
 
 export const UPGRADE_META: Record<string, UpgradeDef> = Object.fromEntries(

@@ -17,7 +17,8 @@ export type CurrencyId =
   | 'gforce' // 🌀 raw G-force (Phase 3+)
   | 'tension' // 🎻 dramatic tension (Phase 3+)
   | 'moonlight' // 🌙 interstellar resonance (Phase 4+)
-  | 'riderCredits'; // 🎟️ prestige currency (Phase 5 / Director's Cut)
+  | 'echoes' // 🔁 self-referential recursion (Phase 5+)
+  | 'riderCredits'; // 🎟️ prestige currency (Phase 6 / Director's Cut)
 
 export interface CurrencyDef {
   id: CurrencyId;

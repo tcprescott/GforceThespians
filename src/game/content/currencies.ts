@@ -51,12 +51,20 @@ export const CURRENCIES: CurrencyDef[] = [
     phase: 4,
   },
   {
+    id: 'echoes',
+    name: 'Echoes',
+    symbol: '🔁',
+    color: 'text-violet-200',
+    blurb: 'The show performing for itself, forever. Recursion made currency.',
+    phase: 5,
+  },
+  {
     id: 'riderCredits',
     name: 'Rider Credits',
     symbol: '🎟️',
     color: 'text-emerald-200',
     blurb: 'The currency of legend. Spent in the Director’s Cut; survives every reset.',
-    phase: 5,
+    phase: 6,
     persistent: true,
   },
 ];

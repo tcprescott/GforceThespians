@@ -45,7 +45,7 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const phase = PHASE_META[Math.min(phaseUnlocked, 5)];
+  const phase = PHASE_META[Math.min(phaseUnlocked, 6)];
   const accent = accentFor(phase.accent);
 
   return (

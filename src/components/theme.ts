@@ -50,6 +50,14 @@ export const ACCENTS: Record<string, Accent> = {
     fill: 'bg-emerald-400',
     button: 'bg-emerald-500 hover:bg-emerald-400 text-emerald-950',
   },
+  violet: {
+    text: 'text-violet-300',
+    border: 'border-violet-500/30',
+    bg: 'bg-violet-500/10',
+    chip: 'bg-violet-500/15 text-violet-200 border-violet-500/30',
+    fill: 'bg-violet-400',
+    button: 'bg-violet-500 hover:bg-violet-400 text-violet-950',
+  },
 };
 
 export function accentFor(key: string): Accent {

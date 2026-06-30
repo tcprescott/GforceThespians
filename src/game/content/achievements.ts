@@ -254,6 +254,41 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     condition: { kind: 'owned', generator: 'p4-giga-coaster', amount: 25 },
     bonus: 1.09,
   },
+  {
+    id: 'ach-act5',
+    name: 'The Show Becomes Aware',
+    description: 'Reach Act Five — The Ouroboros.',
+    condition: { kind: 'phase', phase: 5 },
+    bonus: 1.12,
+  },
+  {
+    id: 'ach-echo-first',
+    name: '…first…first…first…',
+    description: 'Earn your first Echo.',
+    condition: { kind: 'lifetime', currency: 'echoes', amount: 1 },
+    bonus: 1.08,
+  },
+  {
+    id: 'ach-echo-baron',
+    name: 'Recursion Baron',
+    description: 'Reach 1e6 lifetime Echoes.',
+    condition: { kind: 'lifetime', currency: 'echoes', amount: 1e6 },
+    bonus: 1.12,
+  },
+  {
+    id: 'ach-ouroboros',
+    name: 'It Eats Itself',
+    description: 'Own 10 Ouroboros Coasters.',
+    condition: { kind: 'owned', generator: 'p5-ouroboros-coaster', amount: 10 },
+    bonus: 1.1,
+  },
+  {
+    id: 'ach-mirror-maze',
+    name: 'Lost in the Mirrors',
+    description: 'Own 50 Halls of Mirrors.',
+    condition: { kind: 'owned', generator: 'p5-hall-of-mirrors', amount: 50 },
+    bonus: 1.08,
+  },
 ];
 
 export const ACHIEVEMENT_META: Record<string, AchievementDef> = Object.fromEntries(

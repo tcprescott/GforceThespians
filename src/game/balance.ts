@@ -50,7 +50,7 @@ export const OFFLINE_MIN_SECONDS = 60;
 // Rider Credits earned scale with lifetime "production score" (a weighted sum
 // of lifetime currency earned). Sub-linear so each run is meaningful but not
 // trivially repeatable — tuned for a handful of runs to clear the trees.
-export const PRESTIGE_SCORE_DIVISOR = 4e11;
+export const PRESTIGE_SCORE_DIVISOR = 1.5e17;
 export const PRESTIGE_EXPONENT = 0.5;
 /** You can't prestige until your run would yield at least this many credits. */
 export const PRESTIGE_MIN_CREDITS = 1;
@@ -62,6 +62,7 @@ export const PRESTIGE_WEIGHTS: Record<string, number> = {
   gforce: 12,
   tension: 12,
   moonlight: 250,
+  echoes: 5000,
 };
 
 // --- Achievements ---------------------------------------------------------
