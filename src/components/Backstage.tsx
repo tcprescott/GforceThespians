@@ -1,3 +1,4 @@
+import type { BuyMode } from '../game/store';
 import { useGameStore } from '../game/store';
 import { aggregateEffects } from '../game/effects';
 import { phaseRequirement } from '../game/engine';
@@ -7,8 +8,12 @@ import { GeneratorRow } from './GeneratorRow';
 import { formatNumber } from '../lib/format';
 
 /** Middle tab — generators grouped by act, plus a teaser for the next act. */
+const BUY_MODES: BuyMode[] = [1, 10, 100, 'max'];
+
 export function Backstage() {
   const state = useGameStore();
+  const buyMode = useGameStore((s) => s.buyMode);
+  const setBuyMode = useGameStore((s) => s.setBuyMode);
   const totals = aggregateEffects(state);
 
   const phasesToShow = PHASES.filter((p) => p.id <= state.phaseUnlocked && p.id <= LAST_CONTENT_PHASE);
@@ -18,6 +23,24 @@ export function Backstage() {
 
   return (
     <div className="flex flex-col gap-5">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[11px] uppercase tracking-wider text-zinc-500">Buy amount</span>
+        <div className="flex gap-1 rounded-lg bg-zinc-900/60 p-1">
+          {BUY_MODES.map((m) => (
+            <button
+              key={m}
+              onClick={() => setBuyMode(m)}
+              className={`rounded-md px-2.5 py-1 text-xs font-bold transition-colors ${
+                buyMode === m
+                  ? 'bg-amber-500/25 text-amber-200'
+                  : 'text-zinc-400 hover:text-zinc-200'
+              }`}
+            >
+              {m === 'max' ? 'Max' : `×${m}`}
+            </button>
+          ))}
+        </div>
+      </div>
       {phasesToShow.map((phase) => {
         const accent = accentFor(phase.accent);
         const gens = GENERATORS.filter((g) => g.phase === phase.id);

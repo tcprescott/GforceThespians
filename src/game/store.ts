@@ -18,14 +18,22 @@ import {
 
 type OfflineSummary = ReturnType<typeof applyOffline>['summary'];
 
+/** Quantity selected by the buy-amount toggle. */
+export type BuyMode = 1 | 10 | 100 | 'max';
+
 export interface GameStore extends GameState {
   /** Transient: populated on load if meaningful offline progress occurred. */
   offlineSummary: OfflineSummary;
+  /** UI: how many units a generator's Buy button purchases. */
+  buyMode: BuyMode;
 
   // Actions
   dispatch: () => void;
   buyGen: (id: string, count?: number) => void;
   buyGenMax: (id: string) => void;
+  setBuyMode: (mode: BuyMode) => void;
+  importSave: (raw: string) => boolean;
+  exportSave: () => string;
   purchaseUpgrade: (id: string) => void;
   purchaseTalent: (id: string) => void;
   purchaseArtifact: (id: string) => void;
@@ -72,13 +80,15 @@ function sanitize(p: Partial<GameState> | undefined, t: number): GameState {
 
 export const useGameStore = create<GameStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       ...createInitialState(now()),
       offlineSummary: null,
+      buyMode: 1 as BuyMode,
 
       dispatch: () => set((s) => dispatchCoaster(s)),
       buyGen: (id, count = 1) => set((s) => buyGenerator(s, id, count)),
       buyGenMax: (id) => set((s) => buyGeneratorMax(s, id)),
+      setBuyMode: (mode) => set({ buyMode: mode }),
       purchaseUpgrade: (id) => set((s) => buyUpgrade(s, id)),
       purchaseTalent: (id) => set((s) => buyTalent(s, id)),
       purchaseArtifact: (id) => set((s) => buyArtifact(s, id)),
@@ -96,6 +106,24 @@ export const useGameStore = create<GameStore>()(
 
       dismissOffline: () => set({ offlineSummary: null }),
       hardReset: () => set({ ...createInitialState(now()), offlineSummary: null }),
+
+      // Unicode-safe base64 of the persisted data — portable across browsers.
+      exportSave: () => {
+        const s = get();
+        const data = sanitize(s, now());
+        return btoa(unescape(encodeURIComponent(JSON.stringify({ v: 2, state: data }))));
+      },
+      importSave: (raw) => {
+        try {
+          const json = decodeURIComponent(escape(atob(raw.trim())));
+          const parsed = JSON.parse(json);
+          const data = sanitize((parsed.state ?? parsed) as Partial<GameState>, now());
+          set({ ...data, offlineSummary: null });
+          return true;
+        } catch {
+          return false;
+        }
+      },
     }),
     {
       name: 'gforce-thespians-save',

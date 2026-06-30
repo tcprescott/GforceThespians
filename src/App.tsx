@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGameTick } from './game/useGameTick';
 import { useGameStore } from './game/store';
 import { canPrestige } from './game/engine';
@@ -12,10 +12,12 @@ import { AutomationPanel } from './components/AutomationPanel';
 import { DirectorsCut } from './components/DirectorsCut';
 import { AchievementsPanel } from './components/AchievementsPanel';
 import { StatsPanel } from './components/StatsPanel';
+import { SettingsPanel } from './components/SettingsPanel';
 import { DirectorsNotes } from './components/DirectorsNotes';
 import { OfflineModal } from './components/OfflineModal';
+import { HelpModal } from './components/HelpModal';
 
-type Tab = 'backstage' | 'upgrades' | 'automation' | 'cut' | 'achievements' | 'stats';
+type Tab = 'backstage' | 'upgrades' | 'automation' | 'cut' | 'achievements' | 'stats' | 'settings';
 
 const TABS: { key: Tab; label: string }[] = [
   { key: 'backstage', label: '🎢 Backstage' },
@@ -24,28 +26,27 @@ const TABS: { key: Tab; label: string }[] = [
   { key: 'cut', label: "🎟️ Director's Cut" },
   { key: 'achievements', label: '🏆 Achievements' },
   { key: 'stats', label: '📊 Stats' },
+  { key: 'settings', label: '⚙️ Settings' },
 ];
 
 export default function App() {
   useGameTick();
   const [tab, setTab] = useState<Tab>('backstage');
+  const [showHelp, setShowHelp] = useState(false);
   const phaseUnlocked = useGameStore((s) => s.phaseUnlocked);
   const prestiges = useGameStore((s) => s.stats.prestiges);
-  const hardReset = useGameStore((s) => s.hardReset);
+  const isFreshGame = useGameStore((s) => s.stats.totalClicks === 0 && s.stats.playtimeSeconds < 2);
   const prestigeReady = useGameStore((s) => canPrestige(s));
+
+  // Auto-open the explainer on a player's very first visit.
+  useEffect(() => {
+    if (isFreshGame) setShowHelp(true);
+    // run once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const phase = PHASE_META[Math.min(phaseUnlocked, 5)];
   const accent = accentFor(phase.accent);
-
-  const handleReset = () => {
-    if (
-      window.confirm(
-        'Strike the entire set? This permanently wipes ALL progress — including Rider Credits, talents, artifacts, and achievements. There is no undo.',
-      )
-    ) {
-      hardReset();
-    }
-  };
 
   return (
     <div className="flex min-h-screen flex-col text-zinc-100">
@@ -60,10 +61,10 @@ export default function App() {
             </span>
           </div>
           <button
-            onClick={handleReset}
-            className="rounded-lg border border-zinc-700 px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:border-rose-500/60 hover:text-rose-300"
+            onClick={() => setShowHelp(true)}
+            className="rounded-lg border border-zinc-700 px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:border-amber-500/60 hover:text-amber-300"
           >
-            Strike the Set
+            ? How to play
           </button>
         </div>
       </header>
@@ -108,12 +109,15 @@ export default function App() {
             {tab === 'cut' && <DirectorsCut />}
             {tab === 'achievements' && <AchievementsPanel />}
             {tab === 'stats' && <StatsPanel />}
+            {tab === 'settings' && <SettingsPanel />}
           </div>
         </div>
 
         {/* Right — The Director's Notes */}
         <DirectorsNotes />
       </main>
+
+      {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
 
       <footer className="border-t border-zinc-800/60 px-4 py-3 text-center text-xs text-zinc-600">
         {prestiges > 0 && <span>{prestiges} Director's Cuts · </span>}

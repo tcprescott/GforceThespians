@@ -9,12 +9,14 @@ const browser = await chromium.launch({
 const page = await browser.newPage();
 const URL = 'http://localhost:4190/GforceThespians/';
 await page.goto(URL, { waitUntil: 'networkidle' });
+const curtain = page.getByRole('button', { name: /Raise the curtain/i });
+if (await curtain.isVisible().catch(() => false)) await curtain.click();
 
 // Build some production: click + buy a few generators.
 const dispatch = page.getByRole('button', { name: /Dispatch Coaster/i });
 for (let i = 0; i < 60; i++) await dispatch.click();
 for (let r = 0; r < 4; r++) {
-  const b = page.getByRole('button', { name: /^Buy$/ });
+  const b = page.getByRole('button', { name: /Buy ×/ });
   const n = await b.count();
   for (let i = 0; i < n; i++) { try { await b.nth(i).click({ timeout: 150 }); } catch {} }
 }

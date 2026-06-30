@@ -4,6 +4,7 @@ import type { EffectTotals } from '../game/effects';
 import { useGameStore } from '../game/store';
 import {
   affordableCount,
+  generatorBulkCost,
   generatorCost,
   hasAutomation,
 } from '../game/engine';
@@ -29,13 +30,21 @@ export function GeneratorRow({
   const buyGen = useGameStore((s) => s.buyGen);
   const buyGenMax = useGameStore((s) => s.buyGenMax);
   const setAutoRule = useGameStore((s) => s.setAutoRule);
+  const buyMode = useGameStore((s) => s.buyMode);
 
   const owned = state.owned[def.id] ?? 0;
-  const cost = generatorCost(state, def.id, totals);
   const balance = state.currencies[def.costCurrency];
-  const affordable = balance >= cost;
   const maxBuy = affordableCount(state, def.id, balance, totals);
   const costMeta = CURRENCY_META[def.costCurrency];
+
+  // Resolve the active buy-amount and its cost.
+  const amount = buyMode === 'max' ? maxBuy : buyMode;
+  const cost =
+    amount > 0 ? generatorBulkCost(state, def.id, amount, totals) : generatorCost(state, def.id, totals);
+  const affordable = amount > 0 && balance >= cost;
+  const buyLabel =
+    buyMode === 'max' ? `Buy Max${maxBuy > 0 ? ` ×${formatInt(maxBuy)}` : ''}` : `Buy ×${buyMode}`;
+  const onBuy = () => (buyMode === 'max' ? buyGenMax(def.id) : buyGen(def.id, buyMode));
 
   const autoBuyUnlocked = hasAutomation(state, 'auto-buy');
   const rule = state.autoRules[def.id];
@@ -69,23 +78,13 @@ export function GeneratorRow({
           <div className={`text-sm font-semibold tabular-nums ${affordable ? 'text-amber-300' : 'text-rose-400/80'}`}>
             {costMeta.symbol} {formatNumber(cost)}
           </div>
-          <div className="flex gap-1">
-            <button
-              onClick={() => buyGen(def.id, 1)}
-              disabled={!affordable}
-              className="rounded-md bg-amber-500/90 px-2.5 py-1 text-xs font-bold text-amber-950 enabled:hover:bg-amber-400 disabled:cursor-not-allowed disabled:bg-zinc-700/60 disabled:text-zinc-500"
-            >
-              Buy
-            </button>
-            <button
-              onClick={() => buyGenMax(def.id)}
-              disabled={maxBuy <= 0}
-              className="rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-bold text-amber-300 enabled:hover:bg-amber-500/10 disabled:cursor-not-allowed disabled:border-zinc-700/60 disabled:text-zinc-600"
-              title={maxBuy > 0 ? `Buy ${maxBuy}` : 'Cannot afford'}
-            >
-              Max{maxBuy > 0 ? ` (${formatInt(maxBuy)})` : ''}
-            </button>
-          </div>
+          <button
+            onClick={onBuy}
+            disabled={!affordable}
+            className="rounded-md bg-amber-500/90 px-3 py-1 text-xs font-bold text-amber-950 enabled:hover:bg-amber-400 disabled:cursor-not-allowed disabled:bg-zinc-700/60 disabled:text-zinc-500"
+          >
+            {buyLabel}
+          </button>
           {autoBuyUnlocked && (
             <label className="mt-0.5 flex cursor-pointer items-center gap-1 text-[10px] text-zinc-400">
               <input

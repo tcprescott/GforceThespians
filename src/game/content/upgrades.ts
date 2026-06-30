@@ -312,6 +312,150 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Cosmic Doctrine',
     tradeoff: true,
   },
+
+  // === Second forks — a second build decision per act ====================
+
+  // Phase 1: Casting Call
+  {
+    id: 'p1-cast-soloist',
+    name: 'Cast: The Soloist',
+    description: 'Understudy Tabbies ×5. A star is born; the ensemble seethes.',
+    phase: 1,
+    cost: { zoomies: 3000 },
+    effects: [{ kind: 'genMult', target: 'p1-understudy-tabby', factor: 5 }],
+    exclusiveGroup: 'p1-cast',
+    forkLabel: 'Casting Call',
+  },
+  {
+    id: 'p1-cast-ensemble',
+    name: 'Cast: True Ensemble',
+    description: 'A balanced company — all generators ×1.35.',
+    phase: 1,
+    cost: { zoomies: 3000 },
+    effects: [{ kind: 'genMult', target: 'all', factor: 1.35 }],
+    exclusiveGroup: 'p1-cast',
+    forkLabel: 'Casting Call',
+  },
+  {
+    id: 'p1-cast-stunt',
+    name: 'Cast: Stunt Cats',
+    description: 'Yarn Catapults ×4 and Cardboard Loops ×4. Pure thrill, no restraint.',
+    phase: 1,
+    cost: { zoomies: 3000 },
+    effects: [
+      { kind: 'genMult', target: 'p1-yarn-catapult', factor: 4 },
+      { kind: 'genMult', target: 'p1-cardboard-loop', factor: 4 },
+    ],
+    exclusiveGroup: 'p1-cast',
+    forkLabel: 'Casting Call',
+  },
+
+  // Phase 2: Fuel Strategy
+  {
+    id: 'p2-fuel-premium',
+    name: 'Fuel: Premium Blend',
+    description: 'Kibble ×2.4. Run rich, run easy.',
+    phase: 2,
+    cost: { zoomies: 4e6 },
+    effects: [{ kind: 'currencyMult', currency: 'kibble', factor: 2.4 }],
+    exclusiveGroup: 'p2-fuel',
+    forkLabel: 'Fuel Strategy',
+  },
+  {
+    id: 'p2-fuel-recycle',
+    name: 'Fuel: Closed Loop',
+    description: 'Conveyor Feeders ×4. Squeeze every drop from what you burn.',
+    phase: 2,
+    cost: { zoomies: 4e6 },
+    effects: [{ kind: 'genMult', target: 'p2-conveyor-feeder', factor: 4 }],
+    exclusiveGroup: 'p2-fuel',
+    forkLabel: 'Fuel Strategy',
+  },
+  {
+    id: 'p2-fuel-diversify',
+    name: 'Fuel: Diversified',
+    description: 'All generators ×1.35. Spread the load across the whole yard.',
+    phase: 2,
+    cost: { zoomies: 4e6 },
+    effects: [{ kind: 'genMult', target: 'all', factor: 1.35 }],
+    exclusiveGroup: 'p2-fuel',
+    forkLabel: 'Fuel Strategy',
+  },
+
+  // Phase 3: Showmanship
+  {
+    id: 'p3-show-grandeur',
+    name: 'Show: Sheer Grandeur',
+    description: 'ALL production ×1.5 — but the spectacle is costly (all costs ×1.2).',
+    phase: 3,
+    cost: { zoomies: 3e9 },
+    effects: [
+      { kind: 'globalMult', factor: 1.5 },
+      { kind: 'costMult', target: 'all', factor: 1.2 },
+    ],
+    exclusiveGroup: 'p3-show',
+    forkLabel: 'Showmanship',
+    tradeoff: true,
+  },
+  {
+    id: 'p3-show-precision',
+    name: 'Show: Precision',
+    description: 'Harmonic Loops ×4. Reward the balanced engine of the act.',
+    phase: 3,
+    cost: { zoomies: 3e9 },
+    effects: [{ kind: 'genMult', target: 'p3-harmonic-loop', factor: 4 }],
+    exclusiveGroup: 'p3-show',
+    forkLabel: 'Showmanship',
+  },
+  {
+    id: 'p3-show-boxoffice',
+    name: 'Show: Box Office',
+    description: 'Zoomies ×2.6. Convert every thrill straight into the takings.',
+    phase: 3,
+    cost: { zoomies: 3e9 },
+    effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 2.6 }],
+    exclusiveGroup: 'p3-show',
+    forkLabel: 'Showmanship',
+  },
+
+  // Phase 4: Cosmic Ambition
+  {
+    id: 'p4-amb-conquer',
+    name: 'Ambition: Conquer',
+    description: 'All generators ×2.2 — but spread thin, Moonlight ×0.8.',
+    phase: 4,
+    cost: { moonlight: 80 },
+    effects: [
+      { kind: 'genMult', target: 'all', factor: 2.2 },
+      { kind: 'currencyMult', currency: 'moonlight', factor: 0.8 },
+    ],
+    exclusiveGroup: 'p4-ambition',
+    forkLabel: 'Cosmic Ambition',
+    tradeoff: true,
+  },
+  {
+    id: 'p4-amb-harmonize',
+    name: 'Ambition: Harmonize the Spheres',
+    description: 'G-Force ×2.2 and Tension ×2.2. Carry Act Three’s balance to the stars.',
+    phase: 4,
+    cost: { moonlight: 80 },
+    effects: [
+      { kind: 'currencyMult', currency: 'gforce', factor: 2.2 },
+      { kind: 'currencyMult', currency: 'tension', factor: 2.2 },
+    ],
+    exclusiveGroup: 'p4-ambition',
+    forkLabel: 'Cosmic Ambition',
+  },
+  {
+    id: 'p4-amb-transcend',
+    name: 'Ambition: Transcend',
+    description: 'ALL production ×1.6. Simply become more.',
+    phase: 4,
+    cost: { moonlight: 80 },
+    effects: [{ kind: 'globalMult', factor: 1.6 }],
+    exclusiveGroup: 'p4-ambition',
+    forkLabel: 'Cosmic Ambition',
+  },
 ];
 
 export const UPGRADE_META: Record<string, UpgradeDef> = Object.fromEntries(

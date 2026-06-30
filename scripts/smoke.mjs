@@ -17,6 +17,10 @@ page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
 
 await page.goto(URL, { waitUntil: 'networkidle' });
 
+// Dismiss the first-visit help modal if present.
+const curtain = page.getByRole('button', { name: /Raise the curtain/i });
+if (await curtain.isVisible().catch(() => false)) await curtain.click();
+
 // Title + main heading render
 const h1 = await page.textContent('h1');
 console.log('heading:', h1?.trim());
@@ -34,7 +38,7 @@ const afterClicks = await zoomies();
 console.log('zoomies after 15 dispatches:', afterClicks);
 
 // 2) Buy the first generator (Cardboard Hill) — its Buy button should enable
-const buyBtns = page.getByRole('button', { name: /^Buy$/ });
+const buyBtns = page.getByRole('button', { name: /Buy ×/ });
 await buyBtns.first().click();
 console.log('bought first generator (Cardboard Hill)');
 
