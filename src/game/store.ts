@@ -127,9 +127,14 @@ export const useGameStore = create<GameStore>()(
       }),
       onRehydrateStorage: () => (state) => {
         if (!state) return;
-        // Credit time spent away, then surface a welcome-back summary.
-        const result = applyOffline(state, now());
-        useGameStore.setState({ ...result.state, offlineSummary: result.summary });
+        // With synchronous localStorage, this callback fires *inside* create(),
+        // before the `useGameStore` binding exists. Defer to a microtask so the
+        // store is bound when we credit offline progress and surface the
+        // welcome-back summary. (Without this, offline progress is silently lost.)
+        queueMicrotask(() => {
+          const result = applyOffline(useGameStore.getState(), now());
+          useGameStore.setState({ ...result.state, offlineSummary: result.summary });
+        });
       },
     },
   ),

@@ -10,8 +10,9 @@ export function HarmonyMeter({ harmony, state }: { harmony: number; state: GameS
   const g = state.currencies.gforce;
   const t = state.currencies.tension;
   const total = g + t;
-  // 0 = all G-Force, 1 = all Tension, 0.5 = balanced.
-  const split = total > 0 ? t / total : 0.5;
+  // 0 = all G-Force, 1 = all Tension, 0.5 = balanced. Guard against Infinity
+  // (Infinity/Infinity = NaN would produce `left: NaN%`).
+  const split = Number.isFinite(total) && total > 0 ? Math.min(1, Math.max(0, t / total)) : 0.5;
   const quality = harmony / HARMONY_MAX; // 0..1
 
   const tone =

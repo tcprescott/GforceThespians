@@ -22,7 +22,7 @@ export function DirectorsNotes() {
         {log.map((entry, i) => (
           <p
             key={entry.id}
-            className={`rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed transition-colors ${TONE[entry.tone]} ${
+            className={`rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed transition-colors ${TONE[entry.tone] ?? TONE.note} ${
               i === 0 ? 'ring-1 ring-white/5' : ''
             }`}
           >

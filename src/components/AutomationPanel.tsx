@@ -12,7 +12,10 @@ export function AutomationPanel() {
   const autoBuy = hasAutomation(state, 'auto-buy');
   const logicGates = hasAutomation(state, 'logic-gates');
 
-  const enabledRules = Object.entries(state.autoRules).filter(([, r]) => r.enabled);
+  // Only count/show rules for generators that still exist (guards stale saves).
+  const enabledRules = Object.entries(state.autoRules).filter(
+    ([id, r]) => r.enabled && GENERATOR_META[id],
+  );
 
   const lockNote = (
     <p className="mt-1 text-xs text-zinc-500">

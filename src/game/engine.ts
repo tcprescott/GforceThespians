@@ -174,7 +174,12 @@ export function computeProduction(
     if (gen.consumes) {
       for (const cur in gen.consumes) {
         const c = cur as CurrencyId;
-        const amt = (gen.consumes[c] ?? 0) * n * gf; // appetite scales with the gen's own boosts
+        // Appetite tracks the generator's own boosts AND global throughput
+        // (globalMult includes harmony + achievements + global talents), so the
+        // fuel-balance mechanic stays meaningful as persistent power compounds.
+        // currencyMult is deliberately excluded: a fuel-production buff
+        // (e.g. Full Tanks → kibble) should ease starvation, not feed it.
+        const amt = (gen.consumes[c] ?? 0) * n * gf * globalMult;
         cons[c] = amt;
         consume[c] += amt;
       }
