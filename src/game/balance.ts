@@ -20,9 +20,9 @@ export const TICK_MS = 1000 / TICKS_PER_SECOND;
 // Cost steepness is the master pacing control: it's ADDED to every generator's
 // own costMultiplier. Because income grows exponentially, steeper costs are
 // what stretch a run from minutes into the multi-hour/day "marathon" range.
-export const GLOBAL_COST_GROWTH_ADD = 0.16;
+export const GLOBAL_COST_GROWTH_ADD = 0.19;
 /** Flat multiplier on every generator's per-second output (fine pacing trim). */
-export const GLOBAL_OUTPUT_SCALE = 0.35;
+export const GLOBAL_OUTPUT_SCALE = 0.26;
 
 /**
  * The Rising Wall. Phase-unlock thresholds scale with your *persistent* power

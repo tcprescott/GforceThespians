@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "sim": "tsx scripts/sim.ts",
+    "validate": "tsx scripts/validate.ts",
     "serve:static": "node scripts/serve.mjs",
     "smoke": "node scripts/smoke.mjs"
   },

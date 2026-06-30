@@ -59,6 +59,10 @@ const PREFERRED_FORK: Record<string, string> = {
   'p2-fuel': 'p2-fuel-premium',
   'p3-show': 'p3-show-precision',
   'p4-ambition': 'p4-amb-transcend',
+  'p1-opening': 'p1-open-charm',
+  'p2-logistics': 'p2-log-stockpile',
+  'p3-physics': 'p3-phys-equilibrium',
+  'p4-destiny': 'p4-dest-resonant',
 };
 
 function fmtTime(sec: number): string {

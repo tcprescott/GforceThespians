@@ -73,4 +73,46 @@ export const MILESTONES: Milestone[] = [
     condition: { kind: 'prestiges', amount: 5 },
     text: 'Five productions deep. The cats greet each reset like seasoned touring performers. "Again," says Tyrande. "From the top."',
   },
+
+  // === EXPANSION milestones ==============================================
+  {
+    id: 'm-curtain-rig',
+    condition: { kind: 'owned', generator: 'p1-curtain-rig', amount: 1 },
+    text: 'A real velvet curtain rises with a satisfying whoosh. A houseplant faints. This is theatre now.',
+  },
+  {
+    id: 'm-skyscraper',
+    condition: { kind: 'owned', generator: 'p2-scratch-skyscraper', amount: 10 },
+    text: 'Ten scratching-post skyscrapers pierce the suburban skyline. Property values do something unprecedented.',
+  },
+  {
+    id: 'm-cross-feed',
+    condition: { kind: 'owned', generator: 'p3-cliffhanger-rig', amount: 1 },
+    text: 'A Cliffhanger Rig hums to life — you can now convert raw force into pure feeling. The balance is yours to sculpt.',
+  },
+  {
+    id: 'm-vertigo',
+    condition: { kind: 'owned', generator: 'p3-vertigo-tower', amount: 1 },
+    text: 'The Vertigo Tower tops out somewhere near low orbit. The cats wave at a passing weather balloon.',
+  },
+  {
+    id: 'm-quadrillion',
+    condition: { kind: 'lifetime', currency: 'zoomies', amount: 1e15 },
+    text: 'A quadrillion zoomies. The accountant cat has stopped counting and simply whispers "yes" at the spreadsheet.',
+  },
+  {
+    id: 'm-wormhole',
+    condition: { kind: 'owned', generator: 'p4-wormhole-junction', amount: 1 },
+    text: 'The first Wormhole Junction opens. A coaster arrives at the station three seconds before it departs. Nobody discusses it.',
+  },
+  {
+    id: 'm-galaxy',
+    condition: { kind: 'lifetime', currency: 'moonlight', amount: 1e6 },
+    text: 'A million Moonlight. The black holes have started requesting specific arias. One left a five-star review.',
+  },
+  {
+    id: 'm-prestige-10',
+    condition: { kind: 'prestiges', amount: 10 },
+    text: 'Ten Director’s Cuts. You have ended the universe ten times and apologized exactly zero. The cats respect this.',
+  },
 ];

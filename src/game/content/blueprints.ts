@@ -69,6 +69,32 @@ export const BLUEPRINTS: BlueprintDef[] = [
     effect: { kind: 'autoUnlockPhase', phase: 4 },
     requires: ['bp-stratosphere-clearance'],
   },
+
+  // === EXPANSION blueprints ==============================================
+  {
+    id: 'bp-season-pass',
+    name: 'Lifetime Season Pass',
+    description: 'Begin every run with 15 Cardboard Loops already inverting. The regulars never left.',
+    cost: 80,
+    effect: { kind: 'startingGenerators', generator: 'p1-cardboard-loop', amount: 15 },
+    requires: ['bp-head-start'],
+  },
+  {
+    id: 'bp-orchestra-pit',
+    name: 'Standing Orchestra Pit',
+    description: 'Begin every run with 10 Strata-Coasters already piercing the sky.',
+    cost: 250,
+    effect: { kind: 'startingGenerators', generator: 'p3-strata-coaster', amount: 10 },
+    requires: ['bp-stratosphere-clearance'],
+  },
+  {
+    id: 'bp-moon-base',
+    name: 'Permanent Moon Base',
+    description: 'Begin every run with 8 Giga-Coasters already in orbit. The moon kept the lights on.',
+    cost: 1800,
+    effect: { kind: 'startingGenerators', generator: 'p4-giga-coaster', amount: 8 },
+    requires: ['bp-launch-window'],
+  },
 ];
 
 export const BLUEPRINT_META: Record<string, BlueprintDef> = Object.fromEntries(

@@ -77,6 +77,49 @@ export const ARTIFACTS: ArtifactDef[] = [
     effects: [{ kind: 'globalMult', factor: 10 }],
     requires: ['a-the-ninth-life'],
   },
+
+  // === EXPANSION artifacts ===============================================
+  {
+    id: 'a-rosin-of-the-gods',
+    name: 'Rosin of the Gods',
+    description: 'Rub it on anything and it performs. Zoomies ×8 and Dispatch ×20.',
+    cost: 90,
+    effects: [
+      { kind: 'currencyMult', currency: 'zoomies', factor: 8 },
+      { kind: 'clickMult', factor: 20 },
+    ],
+    requires: ['a-tuning-fork-of-the-spheres'],
+  },
+  {
+    id: 'a-eternal-litterbox',
+    name: 'The Eternal Litterbox',
+    description: 'Self-cleaning across all of spacetime. Kibble ×15 and all costs ×0.7.',
+    cost: 150,
+    effects: [
+      { kind: 'currencyMult', currency: 'kibble', factor: 15 },
+      { kind: 'costMult', target: 'all', factor: 0.7 },
+    ],
+    requires: ['a-bottomless-bowl'],
+  },
+  {
+    id: 'a-script-of-everything',
+    name: 'The Script of Everything',
+    description: 'Every line ever, perfectly delivered. ALL production ×6.',
+    cost: 320,
+    effects: [{ kind: 'globalMult', factor: 6 }],
+    requires: ['a-pocket-moon'],
+  },
+  {
+    id: 'a-the-encore-key',
+    name: 'The Encore Key',
+    description: 'Unlocks the door marked "again". Rider Credits ×8 and ALL production ×3.',
+    cost: 800,
+    effects: [
+      { kind: 'prestigeMult', factor: 8 },
+      { kind: 'globalMult', factor: 3 },
+    ],
+    requires: ['a-standing-ovation-eternal'],
+  },
 ];
 
 export const ARTIFACT_META: Record<string, ArtifactDef> = Object.fromEntries(

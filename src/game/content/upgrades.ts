@@ -456,6 +456,244 @@ export const UPGRADES: UpgradeDef[] = [
     exclusiveGroup: 'p4-ambition',
     forkLabel: 'Cosmic Ambition',
   },
+
+  // =========================================================================
+  // EXPANSION — a third fork per act + synergy upgrades for the new props.
+  // =========================================================================
+
+  // Phase 1 plain
+  {
+    id: 'p1-up-fog-machine',
+    name: 'Fog Machine',
+    description: 'Velvet Curtain Rigs ×3. Eighty percent atmosphere, twenty percent hazard.',
+    phase: 1,
+    cost: { zoomies: 60000 },
+    effects: [{ kind: 'genMult', target: 'p1-curtain-rig', factor: 3 }],
+  },
+  {
+    id: 'p1-up-diva-rider',
+    name: 'Diva Rider',
+    description: 'Prima Donna Persians ×3. The contract is mostly demands.',
+    phase: 1,
+    cost: { bravos: 220 },
+    effects: [{ kind: 'genMult', target: 'p1-prima-donna', factor: 3 }],
+  },
+  // Phase 1: Opening Number (fork)
+  {
+    id: 'p1-open-bombast',
+    name: 'Opening: Sheer Bombast',
+    description: 'All generators ×1.6 — but the pyrotechnics aren’t cheap (all costs ×1.18).',
+    phase: 1,
+    cost: { bravos: 60 },
+    effects: [
+      { kind: 'genMult', target: 'all', factor: 1.6 },
+      { kind: 'costMult', target: 'all', factor: 1.18 },
+    ],
+    exclusiveGroup: 'p1-opening',
+    forkLabel: 'Opening Number',
+    tradeoff: true,
+  },
+  {
+    id: 'p1-open-charm',
+    name: 'Opening: Pure Charm',
+    description: 'Zoomies ×1.9. Win the room with sheer kinetic delight.',
+    phase: 1,
+    cost: { bravos: 60 },
+    effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 1.9 }],
+    exclusiveGroup: 'p1-opening',
+    forkLabel: 'Opening Number',
+  },
+  {
+    id: 'p1-open-prestige',
+    name: 'Opening: Art-House',
+    description: 'Bravos ×2.3 and Dispatch ×2. Slow, deliberate, devastating.',
+    phase: 1,
+    cost: { bravos: 60 },
+    effects: [
+      { kind: 'currencyMult', currency: 'bravos', factor: 2.3 },
+      { kind: 'clickMult', factor: 2 },
+    ],
+    exclusiveGroup: 'p1-opening',
+    forkLabel: 'Opening Number',
+  },
+
+  // Phase 2 plain
+  {
+    id: 'p2-up-pellet-science',
+    name: 'Pellet Science Division',
+    description: 'Industrial Treat Printers ×3. Peer-reviewed deliciousness.',
+    phase: 2,
+    cost: { zoomies: 1.5e7 },
+    effects: [{ kind: 'genMult', target: 'p2-treat-printer', factor: 3 }],
+  },
+  {
+    id: 'p2-up-express-elevators',
+    name: 'Express Elevators',
+    description: 'Scratching-Post Skyscrapers ×3. Floor forty in four terrifying seconds.',
+    phase: 2,
+    cost: { kibble: 9000 },
+    effects: [{ kind: 'genMult', target: 'p2-scratch-skyscraper', factor: 3 }],
+  },
+  // Phase 2: Logistics (fork)
+  {
+    id: 'p2-log-justintime',
+    name: 'Logistics: Just-In-Time',
+    description: 'Everything ×1.6 — but you carry no slack (Kibble ×0.75). Live dangerously.',
+    phase: 2,
+    cost: { kibble: 2000 },
+    effects: [
+      { kind: 'genMult', target: 'all', factor: 1.6 },
+      { kind: 'currencyMult', currency: 'kibble', factor: 0.75 },
+    ],
+    exclusiveGroup: 'p2-logistics',
+    forkLabel: 'Logistics',
+    tradeoff: true,
+  },
+  {
+    id: 'p2-log-stockpile',
+    name: 'Logistics: Deep Stockpile',
+    description: 'Kibble ×2.2 and Treat Printers ×3. Reserves for days.',
+    phase: 2,
+    cost: { kibble: 2000 },
+    effects: [
+      { kind: 'currencyMult', currency: 'kibble', factor: 2.2 },
+      { kind: 'genMult', target: 'p2-treat-printer', factor: 3 },
+    ],
+    exclusiveGroup: 'p2-logistics',
+    forkLabel: 'Logistics',
+  },
+  {
+    id: 'p2-log-flagship',
+    name: 'Logistics: Flagship Show',
+    description: 'Robo-Ringmasters ×5 and Skyscrapers ×5. Go big or go to the litterbox.',
+    phase: 2,
+    cost: { kibble: 2000 },
+    effects: [
+      { kind: 'genMult', target: 'p2-robo-ringmaster', factor: 5 },
+      { kind: 'genMult', target: 'p2-scratch-skyscraper', factor: 5 },
+    ],
+    exclusiveGroup: 'p2-logistics',
+    forkLabel: 'Logistics',
+  },
+
+  // Phase 3 plain
+  {
+    id: 'p3-up-altimeter',
+    name: 'Precision Altimeter',
+    description: 'Vertigo Towers ×3. Now you know exactly how doomed you are.',
+    phase: 3,
+    cost: { zoomies: 5e10 },
+    effects: [{ kind: 'genMult', target: 'p3-vertigo-tower', factor: 3 }],
+  },
+  {
+    id: 'p3-up-leverage',
+    name: 'Dramatic Leverage',
+    description: 'Cliffhanger Rigs ×3 and Soliloquy Engines ×3 — sharpen both balance levers.',
+    phase: 3,
+    cost: { zoomies: 5e10 },
+    effects: [
+      { kind: 'genMult', target: 'p3-cliffhanger-rig', factor: 3 },
+      { kind: 'genMult', target: 'p3-soliloquy-engine', factor: 3 },
+    ],
+  },
+  // Phase 3: Physics (fork)
+  {
+    id: 'p3-phys-relativity',
+    name: 'Physics: General Relativity',
+    description: 'ALL production ×1.6 — but bending spacetime is expensive (all costs ×1.2).',
+    phase: 3,
+    cost: { zoomies: 4e9 },
+    effects: [
+      { kind: 'globalMult', factor: 1.6 },
+      { kind: 'costMult', target: 'all', factor: 1.2 },
+    ],
+    exclusiveGroup: 'p3-physics',
+    forkLabel: 'Physics',
+    tradeoff: true,
+  },
+  {
+    id: 'p3-phys-equilibrium',
+    name: 'Physics: Equilibrium',
+    description: 'Vertigo Towers ×4 and both balance levers ×3. Master the centre.',
+    phase: 3,
+    cost: { zoomies: 4e9 },
+    effects: [
+      { kind: 'genMult', target: 'p3-vertigo-tower', factor: 4 },
+      { kind: 'genMult', target: 'p3-cliffhanger-rig', factor: 3 },
+      { kind: 'genMult', target: 'p3-soliloquy-engine', factor: 3 },
+    ],
+    exclusiveGroup: 'p3-physics',
+    forkLabel: 'Physics',
+  },
+  {
+    id: 'p3-phys-spectacle',
+    name: 'Physics: Spectacle Over Sense',
+    description: 'Zoomies ×2.8. Who needs balance when you have box office?',
+    phase: 3,
+    cost: { zoomies: 4e9 },
+    effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 2.8 }],
+    exclusiveGroup: 'p3-physics',
+    forkLabel: 'Physics',
+  },
+
+  // Phase 4 plain
+  {
+    id: 'p4-up-paradox-insurance',
+    name: 'Paradox Insurance',
+    description: 'Wormhole Junctions ×3. Covers grandfather paradoxes, excludes acts of cat.',
+    phase: 4,
+    cost: { moonlight: 400 },
+    effects: [{ kind: 'genMult', target: 'p4-wormhole-junction', factor: 3 }],
+  },
+  {
+    id: 'p4-up-encore-fuel',
+    name: 'Stellar Encore Fuel',
+    description: 'Supernova Encores ×3. Each curtain call a little brighter than the last.',
+    phase: 4,
+    cost: { moonlight: 400 },
+    effects: [{ kind: 'genMult', target: 'p4-supernova-encore', factor: 3 }],
+  },
+  // Phase 4: Destiny (fork)
+  {
+    id: 'p4-dest-expansionism',
+    name: 'Destiny: Expansionism',
+    description: 'All generators ×2.4 — but spread across the void, Moonlight ×0.85.',
+    phase: 4,
+    cost: { moonlight: 120 },
+    effects: [
+      { kind: 'genMult', target: 'all', factor: 2.4 },
+      { kind: 'currencyMult', currency: 'moonlight', factor: 0.85 },
+    ],
+    exclusiveGroup: 'p4-destiny',
+    forkLabel: 'Final Destiny',
+    tradeoff: true,
+  },
+  {
+    id: 'p4-dest-resonant',
+    name: 'Destiny: Resonant Path',
+    description: 'Moonlight ×3 and global ×1.2. Tune yourself to the end of the show.',
+    phase: 4,
+    cost: { moonlight: 120 },
+    effects: [
+      { kind: 'currencyMult', currency: 'moonlight', factor: 3 },
+      { kind: 'globalMult', factor: 1.2 },
+    ],
+    exclusiveGroup: 'p4-destiny',
+    forkLabel: 'Final Destiny',
+  },
+  {
+    id: 'p4-dest-paradox',
+    name: 'Destiny: Embrace the Paradox',
+    description: 'Wormhole Junctions ×6 and Supernova Encores ×4. Become a closed timelike curtain call.',
+    phase: 4,
+    cost: { moonlight: 120 },
+    effects: [
+      { kind: 'genMult', target: 'p4-wormhole-junction', factor: 6 },
+      { kind: 'genMult', target: 'p4-supernova-encore', factor: 4 },
+    ],
+    exclusiveGroup: 'p4-destiny',
+    forkLabel: 'Final Destiny',
+  },
 ];
 
 export const UPGRADE_META: Record<string, UpgradeDef> = Object.fromEntries(

@@ -277,6 +277,141 @@ export const GENERATORS: GeneratorDef[] = [
     costMultiplier: 1.16,
     output: { moonlight: 65, gforce: 5e5, tension: 5e5, zoomies: 1.4e13 },
   },
+
+  // =========================================================================
+  // EXPANSION — deeper ladders for every act. (Appended so each act's new
+  // props appear after its originals.)
+  // =========================================================================
+
+  // --- Phase 1 extras ------------------------------------------------------
+  {
+    id: 'p1-curtain-rig',
+    name: 'Velvet Curtain Rig',
+    description: 'A proper curtain on a pulley. Drama doubles as airtime; the cats demand a fog machine.',
+    phase: 1,
+    costCurrency: 'zoomies',
+    baseCost: 42000,
+    costMultiplier: 1.16,
+    output: { zoomies: 620, bravos: 5 },
+  },
+  {
+    id: 'p1-prima-donna',
+    name: 'Prima Donna Persian',
+    description: 'A diva who will only perform stage-left, in soft lighting. Pure, demanding acclaim.',
+    phase: 1,
+    costCurrency: 'zoomies',
+    baseCost: 95000,
+    costMultiplier: 1.17,
+    output: { bravos: 16 },
+  },
+  {
+    id: 'p1-grand-finale',
+    name: 'Living-Room Grand Finale',
+    description: 'Every cushion, every cat, every cardboard inch — one enormous closing number.',
+    phase: 1,
+    costCurrency: 'zoomies',
+    baseCost: 380000,
+    costMultiplier: 1.15,
+    output: { zoomies: 4200 },
+  },
+
+  // --- Phase 2 extras ------------------------------------------------------
+  {
+    id: 'p2-treat-printer',
+    name: 'Industrial Treat Printer',
+    description: 'Prints Kibble by the pallet. Smells incredible. Legally a "morale device".',
+    phase: 2,
+    costCurrency: 'zoomies',
+    baseCost: 8e6,
+    costMultiplier: 1.16,
+    output: { kibble: 320 },
+  },
+  {
+    id: 'p2-scratch-skyscraper',
+    name: 'Scratching-Post Skyscraper',
+    description: 'Forty storeys of sisal and screaming descents. Burns fuel; prints acclaim.',
+    phase: 2,
+    costCurrency: 'zoomies',
+    baseCost: 1.4e7,
+    costMultiplier: 1.16,
+    output: { zoomies: 380000, bravos: 90 },
+    consumes: { kibble: 14 },
+  },
+  {
+    id: 'p2-robo-ringmaster',
+    name: 'Robo-Ringmaster',
+    description: 'An animatronic top hat that runs the whole yard. Voracious, but magnificent.',
+    phase: 2,
+    costCurrency: 'kibble',
+    baseCost: 22000,
+    costMultiplier: 1.16,
+    output: { zoomies: 620000, bravos: 200 },
+    consumes: { kibble: 22 },
+  },
+
+  // --- Phase 3 extras (cross-feed coasters help you hold harmony) ----------
+  {
+    id: 'p3-vertigo-tower',
+    name: 'Vertigo Tower',
+    description: 'So tall the cats can see next Tuesday. Generates force and feeling in lockstep.',
+    phase: 3,
+    costCurrency: 'zoomies',
+    baseCost: 6e10,
+    costMultiplier: 1.16,
+    output: { gforce: 1600, tension: 1600, zoomies: 3e8 },
+  },
+  {
+    id: 'p3-cliffhanger-rig',
+    name: 'Cliffhanger Rig',
+    description: 'Converts hoarded G-Force into Tension (and a fortune) — a lever to re-balance the act.',
+    phase: 3,
+    costCurrency: 'gforce',
+    baseCost: 9000,
+    costMultiplier: 1.18,
+    output: { tension: 620, zoomies: 4e8 },
+  },
+  {
+    id: 'p3-soliloquy-engine',
+    name: 'Soliloquy Engine',
+    description: 'Converts hoarded Tension into G-Force (and a fortune) — the other lever. Balance at will.',
+    phase: 3,
+    costCurrency: 'tension',
+    baseCost: 9000,
+    costMultiplier: 1.18,
+    output: { gforce: 620, zoomies: 4e8 },
+  },
+
+  // --- Phase 4 extras ------------------------------------------------------
+  {
+    id: 'p4-wormhole-junction',
+    name: 'Wormhole Junction',
+    description: 'A coaster that exits before it enters. Produces everything, including paradoxes.',
+    phase: 4,
+    costCurrency: 'zoomies',
+    baseCost: 6e16,
+    costMultiplier: 1.16,
+    output: { moonlight: 240, gforce: 2e6, tension: 2e6, zoomies: 6e13 },
+  },
+  {
+    id: 'p4-galactic-tour-bus',
+    name: 'Galactic Tour Bus',
+    description: 'Season-pass holders ride the whole arm of the galaxy. Spend G-Force, reap Moonlight & raves.',
+    phase: 4,
+    costCurrency: 'gforce',
+    baseCost: 2e6,
+    costMultiplier: 1.17,
+    output: { moonlight: 40, bravos: 2e10, zoomies: 2e12 },
+  },
+  {
+    id: 'p4-supernova-encore',
+    name: 'Supernova Encore',
+    description: 'For the curtain call, a star. Compounds its own Moonlight in a blinding crescendo.',
+    phase: 4,
+    costCurrency: 'moonlight',
+    baseCost: 800,
+    costMultiplier: 1.18,
+    output: { moonlight: 110, zoomies: 2e13 },
+  },
 ];
 
 export const GENERATOR_META: Record<string, GeneratorDef> = Object.fromEntries(
