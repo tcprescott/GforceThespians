@@ -530,7 +530,7 @@ export function doPrestige(state: GameState, now: number): GameState {
 
   const note: LogEntry = {
     id: state.nextLogId,
-    text: `🎟️ The Director's Cut: reality strikes its set. You bank ${pending.toLocaleString()} Rider Credits and walk back to Act One.`,
+    text: `⭐ The Revival: you strike the set and take your final bow. You bank ${pending.toLocaleString()} Legacy and walk back to Act One.`,
     tone: 'prestige',
   };
 

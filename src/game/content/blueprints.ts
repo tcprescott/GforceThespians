@@ -1,7 +1,7 @@
 import type { BlueprintDef } from '../types';
 
 // ===========================================================================
-// Blueprints — permanent STRUCTURAL unlocks bought once with Rider Credits.
+// Blueprints — permanent STRUCTURAL unlocks bought once with Legacy.
 // They don't multiply numbers; they change how a run is shaped: head-starts,
 // automation, and skipping the slow opening of later acts.
 // ===========================================================================
@@ -9,15 +9,15 @@ import type { BlueprintDef } from '../types';
 export const BLUEPRINTS: BlueprintDef[] = [
   {
     id: 'bp-auto-dispatch',
-    name: 'Automated Dispatch Lever',
-    description: 'Unlocks the Auto-Dispatcher: the coasters launch themselves, hands-free.',
+    name: 'The Prompter’s Box',
+    description: 'Unlocks the Auto-Cue: the scenes call themselves, hands-free.',
     cost: 6,
     effect: { kind: 'unlockAutomation', automation: 'auto-dispatch' },
   },
   {
     id: 'bp-head-start',
     name: 'Opening-Night Head Start',
-    description: 'Begin every run with 25 Cardboard Hills already built. Skip the cold open.',
+    description: 'Begin every run with 25 Cardboard Flats already built. Skip the cold open.',
     cost: 12,
     effect: { kind: 'startingGenerators', generator: 'p1-cardboard-hill', amount: 25 },
   },
@@ -31,16 +31,16 @@ export const BLUEPRINTS: BlueprintDef[] = [
   },
   {
     id: 'bp-backyard-permit',
-    name: 'Pre-Approved Backyard Permit',
-    description: 'Act Two is unlocked from the very start of every run. The contractors are on retainer.',
+    name: 'Pre-Approved Playhouse Lease',
+    description: 'Act Two is unlocked from the very start of every run. The playhouse is on retainer.',
     cost: 150,
     effect: { kind: 'autoUnlockPhase', phase: 2 },
     requires: ['bp-head-start'],
   },
   {
     id: 'bp-fuel-reserves',
-    name: 'Strategic Kibble Reserve',
-    description: 'Begin every run with 15 Kibble Dispensers humming. No more cold-starting the fuel economy.',
+    name: 'Strategic Coffee Reserve',
+    description: 'Begin every run with 15 Coffee Urns humming. No more cold-starting the fuel economy.',
     cost: 500,
     effect: { kind: 'startingGenerators', generator: 'p2-kibble-dispenser', amount: 15 },
     requires: ['bp-backyard-permit', 'bp-auto-buy'],
@@ -55,16 +55,16 @@ export const BLUEPRINTS: BlueprintDef[] = [
   },
   {
     id: 'bp-stratosphere-clearance',
-    name: 'Stratosphere Clearance',
-    description: 'Act Three is unlocked from the start of every run. The FAA gave up.',
+    name: 'Permanent Main-Stage Lease',
+    description: 'Act Three is unlocked from the start of every run. The grand stage is booked in perpetuity.',
     cost: 1200,
     effect: { kind: 'autoUnlockPhase', phase: 3 },
     requires: ['bp-backyard-permit'],
   },
   {
     id: 'bp-launch-window',
-    name: 'Permanent Launch Window',
-    description: 'Act Four is unlocked from the start of every run. The moon has a standing reservation.',
+    name: 'Permanent Cosmic Residency',
+    description: 'Act Four is unlocked from the start of every run. The cosmos keeps a seat warm.',
     cost: 6000,
     effect: { kind: 'autoUnlockPhase', phase: 4 },
     requires: ['bp-stratosphere-clearance'],
@@ -73,8 +73,8 @@ export const BLUEPRINTS: BlueprintDef[] = [
   // === EXPANSION blueprints ==============================================
   {
     id: 'bp-season-pass',
-    name: 'Lifetime Season Pass',
-    description: 'Begin every run with 15 Cardboard Loops already inverting. The regulars never left.',
+    name: 'Lifetime Season Subscription',
+    description: 'Begin every run with 15 Painted Backdrops already hung. The regulars never left.',
     cost: 80,
     effect: { kind: 'startingGenerators', generator: 'p1-cardboard-loop', amount: 15 },
     requires: ['bp-head-start'],
@@ -82,15 +82,15 @@ export const BLUEPRINTS: BlueprintDef[] = [
   {
     id: 'bp-orchestra-pit',
     name: 'Standing Orchestra Pit',
-    description: 'Begin every run with 10 Strata-Coasters already piercing the sky.',
+    description: 'Begin every run with 10 Main Stages already piercing the sky.',
     cost: 250,
     effect: { kind: 'startingGenerators', generator: 'p3-strata-coaster', amount: 10 },
     requires: ['bp-stratosphere-clearance'],
   },
   {
     id: 'bp-moon-base',
-    name: 'Permanent Moon Base',
-    description: 'Begin every run with 8 Giga-Coasters already in orbit. The moon kept the lights on.',
+    name: 'Permanent Lunar Residency',
+    description: 'Begin every run with 8 Command Performances already in orbit. The moon kept the lights on.',
     cost: 1800,
     effect: { kind: 'startingGenerators', generator: 'p4-giga-coaster', amount: 8 },
     requires: ['bp-launch-window'],

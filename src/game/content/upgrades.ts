@@ -3,10 +3,10 @@ import type { UpgradeDef } from '../types';
 // ===========================================================================
 // Upgrades — the per-run decision layer.
 //
-// Three flavors keep each phase a series of choices rather than a checklist:
+// Three flavors keep each act a series of choices rather than a checklist:
 //   1. Straight multipliers — affordable, obvious, the bread and butter.
 //   2. FORKS (exclusiveGroup) — pick exactly ONE per group, per run. Locks out
-//      the siblings until the next Director's Cut. This is the build decision.
+//      the siblings until the next Revival. This is the build decision.
 //   3. Tradeoffs — bundled upside + downside; powerful but not free.
 //
 // Because forks reset on prestige, every run you get to commit to a different
@@ -14,19 +14,19 @@ import type { UpgradeDef } from '../types';
 // ===========================================================================
 
 export const UPGRADES: UpgradeDef[] = [
-  // --- Phase 1 -------------------------------------------------------------
+  // --- Act 1 ---------------------------------------------------------------
   {
     id: 'p1-up-reinforced-tape',
     name: 'Reinforced Tape',
-    description: 'Cardboard Hills produce ×2. Structural integrity is overrated, but nice.',
+    description: 'Cardboard Flats produce ×2. Structural integrity is overrated, but nice.',
     phase: 1,
     cost: { zoomies: 500 },
     effects: [{ kind: 'genMult', target: 'p1-cardboard-hill', factor: 2 }],
   },
   {
     id: 'p1-up-laser-pointer',
-    name: 'Laser Pointer Discipline',
-    description: 'Every Dispatch is ×3 as effective. The cats are extremely motivated.',
+    name: 'Cue Drills',
+    description: 'Every Cue is ×3 as effective. The cast is extremely motivated.',
     phase: 1,
     cost: { zoomies: 1200 },
     effects: [{ kind: 'clickMult', factor: 3 }],
@@ -34,7 +34,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p1-up-cushion-springs',
     name: 'Cushion Springs',
-    description: 'Sofa Cushion Airtime ×3.',
+    description: 'Sofa Front Rows ×3.',
     phase: 1,
     cost: { zoomies: 6000 },
     effects: [{ kind: 'genMult', target: 'p1-sofa-airtime', factor: 3 }],
@@ -80,7 +80,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p1-fork-crowd-pleaser',
     name: 'Style: Crowd-Pleaser',
-    description: 'A balanced hand: all generators ×1.25 and Dispatch ×4. No downside, no fireworks.',
+    description: 'A balanced hand: all generators ×1.25 and Cue ×4. No downside, no fireworks.',
     phase: 1,
     cost: { bravos: 40 },
     effects: [
@@ -91,19 +91,19 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Directing Style',
   },
 
-  // --- Phase 2 -------------------------------------------------------------
+  // --- Act 2 ---------------------------------------------------------------
   {
     id: 'p2-up-bigger-hopper',
     name: 'Bigger Hopper',
-    description: 'All Kibble production ×2. Fuel is freedom.',
+    description: 'All Coffee production ×2. Fuel is freedom.',
     phase: 2,
     cost: { zoomies: 6e5 },
     effects: [{ kind: 'currencyMult', currency: 'kibble', factor: 2 }],
   },
   {
     id: 'p2-up-roomba-firmware',
-    name: 'Roomba Firmware v2',
-    description: 'Litterbox Roombas ×3. The patch notes are mostly hissing.',
+    name: 'Stagehand Firmware v2',
+    description: 'Roving Stagehands ×3. The patch notes are mostly grumbling.',
     phase: 2,
     cost: { kibble: 2500 },
     effects: [{ kind: 'genMult', target: 'p2-litterbox-roomba', factor: 3 }],
@@ -111,7 +111,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-up-timber-treatment',
     name: 'Pressure-Treated Timber',
-    description: 'Backyard Timber Coasters ×3.',
+    description: 'Hand-Built Prosceniums ×3.',
     phase: 2,
     cost: { zoomies: 6e6 },
     effects: [{ kind: 'genMult', target: 'p2-timber-coaster', factor: 3 }],
@@ -119,7 +119,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-up-press-tour',
     name: 'National Press Tour',
-    description: 'Bravos ×2.2. Even the litterbox gets a profile in the Sunday paper.',
+    description: 'Bravos ×2.2. Even the coffee urn gets a profile in the Sunday paper.',
     phase: 2,
     cost: { bravos: 6000 },
     effects: [{ kind: 'currencyMult', currency: 'bravos', factor: 2.2 }],
@@ -128,7 +128,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-fork-lean',
     name: 'Doctrine: Lean & Mean',
-    description: 'Everything ×2.2 — but you run the tanks low (Kibble production ×0.7). Risky.',
+    description: 'Everything ×2.2 — but you run the tanks low (Coffee production ×0.7). Risky.',
     phase: 2,
     cost: { kibble: 1500 },
     effects: [
@@ -142,7 +142,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-fork-sustainable',
     name: 'Doctrine: Sustainable',
-    description: 'Kibble ×2.6 and everything ×1.2. Fuel-rich, forgiving, dependable.',
+    description: 'Coffee ×2.6 and everything ×1.2. Fuel-rich, forgiving, dependable.',
     phase: 2,
     cost: { kibble: 1500 },
     effects: [
@@ -154,8 +154,8 @@ export const UPGRADES: UpgradeDef[] = [
   },
   {
     id: 'p2-fork-overclock',
-    name: 'Doctrine: Overclock the Line',
-    description: 'Conveyor Feeders ×6 and Roombas ×4 — but the strain dims everything else (global ×0.85).',
+    name: 'Doctrine: Overclock the Crew',
+    description: 'Overnight Crews ×6 and Roving Stagehands ×4 — but the strain dims everything else (global ×0.85).',
     phase: 2,
     cost: { kibble: 1500 },
     effects: [
@@ -168,11 +168,11 @@ export const UPGRADES: UpgradeDef[] = [
     tradeoff: true,
   },
 
-  // --- Phase 3 -------------------------------------------------------------
+  // --- Act 3 ---------------------------------------------------------------
   {
     id: 'p3-up-g-suit',
-    name: 'Tailored G-Suits',
-    description: 'G-Force Pylons ×3.',
+    name: 'Comedy Coaching',
+    description: 'Comedy Cannons ×3.',
     phase: 3,
     cost: { gforce: 6000 },
     effects: [{ kind: 'genMult', target: 'p3-gforce-pylon', factor: 3 }],
@@ -180,7 +180,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-up-dramaturgy',
     name: 'Dramaturgy Department',
-    description: 'Tension Orchestras ×3.',
+    description: 'Tragedy Orchestras ×3.',
     phase: 3,
     cost: { tension: 6000 },
     effects: [{ kind: 'genMult', target: 'p3-tension-orchestra', factor: 3 }],
@@ -196,8 +196,8 @@ export const UPGRADES: UpgradeDef[] = [
   // FORK: which discipline do you master? (Plays directly off the harmony mechanic.)
   {
     id: 'p3-fork-force',
-    name: 'Discipline: Brute Force',
-    description: 'G-Force ×3.2 — but Tension lags behind (×0.8). Skews your harmony; mind the balance.',
+    name: 'Discipline: All-Out Comedy',
+    description: 'Comedy ×3.2 — but Tragedy lags behind (×0.8). Skews your harmony; mind the balance.',
     phase: 3,
     cost: { zoomies: 2e9 },
     effects: [
@@ -210,8 +210,8 @@ export const UPGRADES: UpgradeDef[] = [
   },
   {
     id: 'p3-fork-feeling',
-    name: 'Discipline: Pure Feeling',
-    description: 'Tension ×3.2 — but G-Force lags (×0.8). The other skew. Choose your imbalance wisely.',
+    name: 'Discipline: All-Out Tragedy',
+    description: 'Tragedy ×3.2 — but Comedy lags (×0.8). The other skew. Choose your imbalance wisely.',
     phase: 3,
     cost: { zoomies: 2e9 },
     effects: [
@@ -225,7 +225,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-fork-harmony',
     name: 'Discipline: Harmony',
-    description: 'Strata-Coasters ×3 and Harmonic Loops ×3 — the balanced engines. Keeps you centered.',
+    description: 'Main Stages ×3 and Tragicomedies ×3 — the balanced engines. Keeps you centered.',
     phase: 3,
     cost: { zoomies: 2e9 },
     effects: [
@@ -236,18 +236,18 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Absurd Discipline',
   },
 
-  // --- Phase 4 -------------------------------------------------------------
+  // --- Act 4 ---------------------------------------------------------------
   {
     id: 'p4-up-warp-rails',
-    name: 'Warp Rails',
-    description: 'Giga-Coasters ×3.',
+    name: 'Warp Staging',
+    description: 'Command Performances ×3.',
     phase: 4,
     cost: { moonlight: 120 },
     effects: [{ kind: 'genMult', target: 'p4-giga-coaster', factor: 3 }],
   },
   {
     id: 'p4-up-choir',
-    name: 'Nine Lives Choir',
+    name: 'Celestial Choir',
     description: 'Black-Hole Arias ×3. Nine-part harmony, eight of them ghosts.',
     phase: 4,
     cost: { moonlight: 180 },
@@ -264,7 +264,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-up-prestige-warmup',
     name: 'Encore Rehearsal',
-    description: 'Rider Credits earned on your next Director’s Cut ×1.5.',
+    description: 'Legacy earned on your next Revival ×1.5.',
     phase: 4,
     cost: { moonlight: 600 },
     effects: [{ kind: 'prestigeMult', factor: 1.5 }],
@@ -287,7 +287,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-fork-resonance',
     name: 'Doctrine: Deep Resonance',
-    description: 'Moonlight ×3.2 and global ×1.25. Lean into the resonance that ends reality.',
+    description: 'Limelight ×3.2 and global ×1.25. Lean into the resonance that ends reality.',
     phase: 4,
     cost: { moonlight: 90 },
     effects: [
@@ -300,7 +300,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-fork-singularity',
     name: 'Doctrine: Sing to the Singularity',
-    description: 'Arias ×6 and Singing Comets ×4 — but the obsession dims zoomies (×0.8).',
+    description: 'Arias ×6 and Singing Comets ×4 — but the obsession dims Buzz (×0.8).',
     phase: 4,
     cost: { moonlight: 90 },
     effects: [
@@ -315,11 +315,11 @@ export const UPGRADES: UpgradeDef[] = [
 
   // === Second forks — a second build decision per act ====================
 
-  // Phase 1: Casting Call
+  // Act 1: Casting Call
   {
     id: 'p1-cast-soloist',
     name: 'Cast: The Soloist',
-    description: 'Understudy Tabbies ×5. A star is born; the ensemble seethes.',
+    description: 'Understudies ×5. A star is born; the ensemble seethes.',
     phase: 1,
     cost: { zoomies: 3000 },
     effects: [{ kind: 'genMult', target: 'p1-understudy-tabby', factor: 5 }],
@@ -338,8 +338,8 @@ export const UPGRADES: UpgradeDef[] = [
   },
   {
     id: 'p1-cast-stunt',
-    name: 'Cast: Stunt Cats',
-    description: 'Yarn Catapults ×4 and Cardboard Loops ×4. Pure thrill, no restraint.',
+    name: 'Cast: Daredevils',
+    description: 'Confetti Cannons ×4 and Painted Backdrops ×4. Pure thrill, no restraint.',
     phase: 1,
     cost: { zoomies: 3000 },
     effects: [
@@ -350,11 +350,11 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Casting Call',
   },
 
-  // Phase 2: Fuel Strategy
+  // Act 2: Fuel Strategy
   {
     id: 'p2-fuel-premium',
     name: 'Fuel: Premium Blend',
-    description: 'Kibble ×2.4. Run rich, run easy.',
+    description: 'Coffee ×2.4. Run rich, run easy.',
     phase: 2,
     cost: { zoomies: 4e6 },
     effects: [{ kind: 'currencyMult', currency: 'kibble', factor: 2.4 }],
@@ -364,7 +364,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-fuel-recycle',
     name: 'Fuel: Closed Loop',
-    description: 'Conveyor Feeders ×4. Squeeze every drop from what you burn.',
+    description: 'Overnight Crews ×4. Squeeze every drop from what you brew.',
     phase: 2,
     cost: { zoomies: 4e6 },
     effects: [{ kind: 'genMult', target: 'p2-conveyor-feeder', factor: 4 }],
@@ -374,7 +374,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-fuel-diversify',
     name: 'Fuel: Diversified',
-    description: 'All generators ×1.35. Spread the load across the whole yard.',
+    description: 'All generators ×1.35. Spread the load across the whole house.',
     phase: 2,
     cost: { zoomies: 4e6 },
     effects: [{ kind: 'genMult', target: 'all', factor: 1.35 }],
@@ -382,7 +382,7 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Fuel Strategy',
   },
 
-  // Phase 3: Showmanship
+  // Act 3: Showmanship
   {
     id: 'p3-show-grandeur',
     name: 'Show: Sheer Grandeur',
@@ -400,7 +400,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-show-precision',
     name: 'Show: Precision',
-    description: 'Harmonic Loops ×4. Reward the balanced engine of the act.',
+    description: 'Tragicomedies ×4. Reward the balanced engine of the act.',
     phase: 3,
     cost: { zoomies: 3e9 },
     effects: [{ kind: 'genMult', target: 'p3-harmonic-loop', factor: 4 }],
@@ -410,7 +410,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-show-boxoffice',
     name: 'Show: Box Office',
-    description: 'Zoomies ×2.6. Convert every thrill straight into the takings.',
+    description: 'Buzz ×2.6. Convert every laugh straight into the takings.',
     phase: 3,
     cost: { zoomies: 3e9 },
     effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 2.6 }],
@@ -418,11 +418,11 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Showmanship',
   },
 
-  // Phase 4: Cosmic Ambition
+  // Act 4: Cosmic Ambition
   {
     id: 'p4-amb-conquer',
     name: 'Ambition: Conquer',
-    description: 'All generators ×2.2 — but spread thin, Moonlight ×0.8.',
+    description: 'All generators ×2.2 — but spread thin, Limelight ×0.8.',
     phase: 4,
     cost: { moonlight: 80 },
     effects: [
@@ -436,7 +436,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-amb-harmonize',
     name: 'Ambition: Harmonize the Spheres',
-    description: 'G-Force ×2.2 and Tension ×2.2. Carry Act Three’s balance to the stars.',
+    description: 'Comedy ×2.2 and Tragedy ×2.2. Carry Act Three’s balance to the stars.',
     phase: 4,
     cost: { moonlight: 80 },
     effects: [
@@ -461,7 +461,7 @@ export const UPGRADES: UpgradeDef[] = [
   // EXPANSION — a third fork per act + synergy upgrades for the new props.
   // =========================================================================
 
-  // Phase 1 plain
+  // Act 1 plain
   {
     id: 'p1-up-fog-machine',
     name: 'Fog Machine',
@@ -472,13 +472,13 @@ export const UPGRADES: UpgradeDef[] = [
   },
   {
     id: 'p1-up-diva-rider',
-    name: 'Diva Rider',
-    description: 'Prima Donna Persians ×3. The contract is mostly demands.',
+    name: 'The Diva’s Rider',
+    description: 'Prima Donnas ×3. The contract is mostly demands.',
     phase: 1,
     cost: { bravos: 220 },
     effects: [{ kind: 'genMult', target: 'p1-prima-donna', factor: 3 }],
   },
-  // Phase 1: Opening Number (fork)
+  // Act 1: Opening Number (fork)
   {
     id: 'p1-open-bombast',
     name: 'Opening: Sheer Bombast',
@@ -496,7 +496,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p1-open-charm',
     name: 'Opening: Pure Charm',
-    description: 'Zoomies ×1.9. Win the room with sheer kinetic delight.',
+    description: 'Buzz ×1.9. Win the room with sheer electric delight.',
     phase: 1,
     cost: { bravos: 60 },
     effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 1.9 }],
@@ -506,7 +506,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p1-open-prestige',
     name: 'Opening: Art-House',
-    description: 'Bravos ×2.3 and Dispatch ×2. Slow, deliberate, devastating.',
+    description: 'Bravos ×2.3 and Cue ×2. Slow, deliberate, devastating.',
     phase: 1,
     cost: { bravos: 60 },
     effects: [
@@ -517,11 +517,11 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Opening Number',
   },
 
-  // Phase 2 plain
+  // Act 2 plain
   {
     id: 'p2-up-pellet-science',
-    name: 'Pellet Science Division',
-    description: 'Industrial Treat Printers ×3. Peer-reviewed deliciousness.',
+    name: 'Barista Science Division',
+    description: 'Catering Trucks ×3. Peer-reviewed deliciousness.',
     phase: 2,
     cost: { zoomies: 1.5e7 },
     effects: [{ kind: 'genMult', target: 'p2-treat-printer', factor: 3 }],
@@ -529,16 +529,16 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-up-express-elevators',
     name: 'Express Elevators',
-    description: 'Scratching-Post Skyscrapers ×3. Floor forty in four terrifying seconds.',
+    description: 'Fly Towers ×3. Floor forty in four terrifying seconds.',
     phase: 2,
     cost: { kibble: 9000 },
     effects: [{ kind: 'genMult', target: 'p2-scratch-skyscraper', factor: 3 }],
   },
-  // Phase 2: Logistics (fork)
+  // Act 2: Logistics (fork)
   {
     id: 'p2-log-justintime',
     name: 'Logistics: Just-In-Time',
-    description: 'Everything ×1.6 — but you carry no slack (Kibble ×0.75). Live dangerously.',
+    description: 'Everything ×1.6 — but you carry no slack (Coffee ×0.75). Live dangerously.',
     phase: 2,
     cost: { kibble: 2000 },
     effects: [
@@ -552,7 +552,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-log-stockpile',
     name: 'Logistics: Deep Stockpile',
-    description: 'Kibble ×2.2 and Treat Printers ×3. Reserves for days.',
+    description: 'Coffee ×2.2 and Catering Trucks ×3. Reserves for days.',
     phase: 2,
     cost: { kibble: 2000 },
     effects: [
@@ -565,7 +565,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p2-log-flagship',
     name: 'Logistics: Flagship Show',
-    description: 'Robo-Ringmasters ×5 and Skyscrapers ×5. Go big or go to the litterbox.',
+    description: 'Robo-Stage-Managers ×5 and Fly Towers ×5. Go big or go home.',
     phase: 2,
     cost: { kibble: 2000 },
     effects: [
@@ -576,11 +576,11 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Logistics',
   },
 
-  // Phase 3 plain
+  // Act 3 plain
   {
     id: 'p3-up-altimeter',
-    name: 'Precision Altimeter',
-    description: 'Vertigo Towers ×3. Now you know exactly how doomed you are.',
+    name: 'Opera Glasses',
+    description: 'Upper Circles ×3. Now you know exactly how doomed you are.',
     phase: 3,
     cost: { zoomies: 5e10 },
     effects: [{ kind: 'genMult', target: 'p3-vertigo-tower', factor: 3 }],
@@ -588,7 +588,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-up-leverage',
     name: 'Dramatic Leverage',
-    description: 'Cliffhanger Rigs ×3 and Soliloquy Engines ×3 — sharpen both balance levers.',
+    description: 'Cliffhangers ×3 and Soliloquy Engines ×3 — sharpen both balance levers.',
     phase: 3,
     cost: { zoomies: 5e10 },
     effects: [
@@ -596,7 +596,7 @@ export const UPGRADES: UpgradeDef[] = [
       { kind: 'genMult', target: 'p3-soliloquy-engine', factor: 3 },
     ],
   },
-  // Phase 3: Physics (fork)
+  // Act 3: Physics (fork)
   {
     id: 'p3-phys-relativity',
     name: 'Physics: General Relativity',
@@ -614,7 +614,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-phys-equilibrium',
     name: 'Physics: Equilibrium',
-    description: 'Vertigo Towers ×4 and both balance levers ×3. Master the centre.',
+    description: 'Upper Circles ×4 and both balance levers ×3. Master the centre.',
     phase: 3,
     cost: { zoomies: 4e9 },
     effects: [
@@ -628,7 +628,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p3-phys-spectacle',
     name: 'Physics: Spectacle Over Sense',
-    description: 'Zoomies ×2.8. Who needs balance when you have box office?',
+    description: 'Buzz ×2.8. Who needs balance when you have box office?',
     phase: 3,
     cost: { zoomies: 4e9 },
     effects: [{ kind: 'currencyMult', currency: 'zoomies', factor: 2.8 }],
@@ -636,11 +636,11 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Physics',
   },
 
-  // Phase 4 plain
+  // Act 4 plain
   {
     id: 'p4-up-paradox-insurance',
     name: 'Paradox Insurance',
-    description: 'Wormhole Junctions ×3. Covers grandfather paradoxes, excludes acts of cat.',
+    description: 'Wormhole Wings ×3. Covers grandfather paradoxes, excludes acts of God.',
     phase: 4,
     cost: { moonlight: 400 },
     effects: [{ kind: 'genMult', target: 'p4-wormhole-junction', factor: 3 }],
@@ -653,11 +653,11 @@ export const UPGRADES: UpgradeDef[] = [
     cost: { moonlight: 400 },
     effects: [{ kind: 'genMult', target: 'p4-supernova-encore', factor: 3 }],
   },
-  // Phase 4: Destiny (fork)
+  // Act 4: Destiny (fork)
   {
     id: 'p4-dest-expansionism',
     name: 'Destiny: Expansionism',
-    description: 'All generators ×2.4 — but spread across the void, Moonlight ×0.85.',
+    description: 'All generators ×2.4 — but spread across the void, Limelight ×0.85.',
     phase: 4,
     cost: { moonlight: 120 },
     effects: [
@@ -671,7 +671,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-dest-resonant',
     name: 'Destiny: Resonant Path',
-    description: 'Moonlight ×3 and global ×1.2. Tune yourself to the end of the show.',
+    description: 'Limelight ×3 and global ×1.2. Tune yourself to the end of the show.',
     phase: 4,
     cost: { moonlight: 120 },
     effects: [
@@ -684,7 +684,7 @@ export const UPGRADES: UpgradeDef[] = [
   {
     id: 'p4-dest-paradox',
     name: 'Destiny: Embrace the Paradox',
-    description: 'Wormhole Junctions ×6 and Supernova Encores ×4. Become a closed timelike curtain call.',
+    description: 'Wormhole Wings ×6 and Supernova Encores ×4. Become a closed timelike curtain call.',
     phase: 4,
     cost: { moonlight: 120 },
     effects: [
@@ -695,7 +695,7 @@ export const UPGRADES: UpgradeDef[] = [
     forkLabel: 'Final Destiny',
   },
 
-  // === Phase 5: The Ouroboros ============================================
+  // === Act 5: The Ouroboros ==============================================
   {
     id: 'p5-up-silvering',
     name: 'Fresh Silvering',
@@ -728,7 +728,7 @@ export const UPGRADES: UpgradeDef[] = [
     cost: { zoomies: 1e20 },
     effects: [{ kind: 'globalMult', factor: 2 }],
   },
-  // Phase 5: The Meta-Question (fork)
+  // Act 5: The Meta-Question (fork)
   {
     id: 'p5-meta-loop',
     name: 'Meta: Embrace the Loop',

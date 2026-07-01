@@ -1,43 +1,45 @@
-# 🎭 The G-Force Thespians
+# 🎭 Curtain Call
 
-An absurd, highly scalable incremental / idler game about **cats performing
-theatre on rollercoasters**. It starts grounded — cardboard coasters in a beige
-living room — and escalates to cosmic absurdity: giga-coasters wrapping the moon
-and singing arias into black holes. Then you reset reality for Rider Credits and
-do it all again, stronger.
+An absurd, highly scalable incremental / idler game about **staging the greatest
+theatre production in the cosmos**. It starts grounded — a scrappy amateur show
+in a beige living room, bedsheet curtain and all — and escalates to cosmic
+absurdity: command performances among the stars, arias sung into black holes.
+Then you strike the set for **Legacy** and do it all again, stronger.
 
 **▶ Play:** https://tcprescott.github.io/GforceThespians/
 
 > Tuned for **marathon idle** pacing: a long, satisfying first run through all
-> five acts, generous offline progress, and a prestige loop that snowballs
-> across many runs. Your build decisions each run are the moment-to-moment hook.
+> six acts, generous offline progress, and a prestige loop that snowballs across
+> many runs. Your build decisions each run are the moment-to-moment hook.
 
-## The five acts
+## The six acts
 
-| Phase | Act | Theme | New mechanic |
-| ----- | --- | ----- | ------------ |
-| 1 | The Mundane | Cardboard coasters, cats, the living room | Zoomies ⚡ + Bravos 🎭 |
-| 2 | The Escalation | Backyard timber, litterbox automation | **Kibble 🍖 fuel** — build producers to feed consumers, or they starve |
-| 3 | The Absurd | Strata-coasters piercing the clouds | **Harmony** — balance G-Force 🌀 vs Dramatic Tension 🎻 to amplify *all* output |
-| 4 | Interstellar | Giga-coasters wrapping the moon | **Moonlight 🌙** — the resonance that unlocks prestige |
-| 5 | The Director's Cut | The prestige layer | Reset for **Rider Credits 🎟️** → talents, artifacts, blueprints, automation |
+| Act | Name | Setting | New mechanic |
+| --- | ---- | ------- | ------------ |
+| 1 | The Mundane | A living-room amateur theatre | Buzz ✨ + Bravos 🎭 |
+| 2 | The Escalation | The old downtown playhouse | **Coffee ☕ fuel** — build producers to feed the crew, or it starves |
+| 3 | The Absurd | The grand main stage | **Harmony** — balance Comedy 😄 vs Tragedy 😢 (the two masks) to amplify *all* output |
+| 4 | Interstellar | A command performance for the cosmos | **Limelight 🌟** — the resonance that carries you onward |
+| 5 | The Ouroboros | A self-aware, self-referential meta-theatre | **Echoes 🔁** — the show performing for itself, forever |
+| 6 | The Revival | The prestige layer | Strike the set for **Legacy ⭐** → talents, artifacts, blueprints, automation |
 
 ## What's in it
 
-- **7 currencies** with an interlocking economy (fuel, a balance mechanic, a
-  prestige currency).
-- **~25 generators** across four acts, each with cost-scaling and (for Act 2+)
-  fuel consumption.
-- **~30 upgrades**, including **forks** — pick exactly one path per run; the
+- **8 currencies** with an interlocking economy (fuel, a balance mechanic, a
+  meta-theatre currency, and a persistent prestige currency).
+- **43 generators** across five content acts, each with cost-scaling and (for
+  Act 2+) fuel consumption.
+- **66 upgrades**, including **13 forks** — pick exactly one path per run; the
   others lock until your next reset, so every run is a real build decision.
-- **Prestige (The Director's Cut):** a persistent **talent tree** (with an
-  endless repeatable capstone), **artifacts**, and **structural blueprints**.
-- **Automation & logic gates:** auto-dispatch, per-generator auto-buyers, and
-  reserve thresholds — unlocked permanently via blueprints.
-- **~20 achievements**, each a small permanent stacking multiplier.
+- **Prestige (The Revival):** a persistent **talent tree** (with two endless
+  repeatable capstones), **artifacts**, and **structural blueprints**.
+- **Automation & logic gates:** auto-cue, per-generator auto-buyers, and reserve
+  thresholds — unlocked permanently via blueprints.
+- **40 achievements**, each a small permanent stacking multiplier.
 - **The Rising Wall:** phase thresholds scale with your persistent power, so
   every run stays a genuine climb instead of collapsing to seconds.
-- **Offline progress**, **localStorage saves**, and a scrolling narrative log.
+- **Random "The Company Improvises" events**, **offline progress**,
+  **localStorage saves**, and a scrolling narrative log.
 
 ## Tech stack
 
@@ -66,7 +68,7 @@ src/
 │   ├── store.ts          # Thin Zustand wrapper + persist + offline-on-load
 │   └── useGameTick.ts    # 10/sec heartbeat (real-elapsed-time based)
 ├── components/           # Stage, CurrencyBar, Backstage, Upgrades, Automation,
-│                         #   Director's Cut (talents/artifacts/blueprints),
+│                         #   The Revival (talents/artifacts/blueprints),
 │                         #   Achievements, Stats, Director's Notes, OfflineModal
 ├── lib/format.ts         # Big-number + duration formatting
 └── App.tsx               # 3-column tabbed layout

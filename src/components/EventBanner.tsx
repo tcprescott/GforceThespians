@@ -1,6 +1,6 @@
 import { useGameStore } from '../game/store';
 
-/** Banner for an active "Cats Improvise" event, with a live countdown. */
+/** Banner for an active "The Company Improvises" event, with a live countdown. */
 export function EventBanner() {
   const ev = useGameStore((s) => s.activeEvent);
   // Re-renders every tick (the store updates ~10x/s), so the countdown is live.

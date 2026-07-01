@@ -1,4 +1,4 @@
-// "The Cats Improvise" — random, timed buff events that fire during ACTIVE
+// "The Company Improvises" — random, timed buff events that fire during ACTIVE
 // play (they're scheduled by the store's tick, which only runs while the tab is
 // open). Each applies a temporary global production multiplier. Kept entirely
 // out of the pure engine so the headless simulator stays deterministic.
@@ -22,9 +22,9 @@ export interface ActiveEvent extends GameEvent {
 export const EVENTS: GameEvent[] = [
   {
     id: 'catnip-frenzy',
-    name: 'Catnip Frenzy',
-    emoji: '🌿',
-    text: 'The entire cast hits the catnip at once. Everything blurs and accelerates.',
+    name: 'The Muse Descends',
+    emoji: '🎭',
+    text: 'The entire cast is struck by inspiration at once. Everything blurs and accelerates.',
     durationSeconds: 30,
     mult: 5,
   },
@@ -38,9 +38,9 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'golden-coaster',
-    name: 'The Golden Coaster',
+    name: 'The Golden Ticket',
     emoji: '✨',
-    text: 'A shimmering golden coaster glides through the production. Catch the wave!',
+    text: 'A shimmering golden ticket flutters through the house. Catch the wave!',
     durationSeconds: 20,
     mult: 8,
   },
@@ -48,7 +48,7 @@ export const EVENTS: GameEvent[] = [
     id: 'gone-viral',
     name: 'Gone Viral',
     emoji: '📈',
-    text: 'A clip of Tyrande’s dramatic meow detonates across the feline internet.',
+    text: 'A clip of Dame Beatrix’s Act III monologue detonates across the theatre internet.',
     durationSeconds: 40,
     mult: 4,
   },

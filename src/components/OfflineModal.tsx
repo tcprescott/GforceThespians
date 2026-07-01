@@ -21,7 +21,7 @@ export function OfflineModal() {
         <h2 className="text-xl font-black text-amber-200">🎭 The show went on without you</h2>
         <p className="mt-1 text-sm text-zinc-400">
           You were away for <span className="font-semibold text-zinc-200">{formatDuration(summary.seconds)}</span>.
-          The cats kept performing.
+          The cast kept performing.
         </p>
 
         <div className="mt-4 flex flex-col gap-1.5">

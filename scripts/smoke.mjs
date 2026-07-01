@@ -18,7 +18,7 @@ page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
 await page.goto(URL, { waitUntil: 'networkidle' });
 
 // Dismiss the first-visit help modal if present.
-const curtain = page.getByRole('button', { name: /Raise the curtain/i });
+const curtain = page.getByRole('button', { name: /On with the show/i });
 if (await curtain.isVisible().catch(() => false)) await curtain.click();
 
 // Title + main heading render
@@ -31,11 +31,11 @@ async function zoomies() {
   return txt?.trim();
 }
 
-// 1) Dispatch increases zoomies
-const dispatch = page.getByRole('button', { name: /Dispatch Coaster/i });
+// 1) Raising the curtain increases Buzz
+const dispatch = page.getByRole('button', { name: /Raise the Curtain/i });
 for (let i = 0; i < 15; i++) await dispatch.click();
 const afterClicks = await zoomies();
-console.log('zoomies after 15 dispatches:', afterClicks);
+console.log('Buzz after 15 curtain-raises:', afterClicks);
 
 // 2) Buy the first generator (Cardboard Hill) — its Buy button should enable
 const buyBtns = page.getByRole('button', { name: /Buy ×/ });
@@ -48,7 +48,7 @@ const afterIdle = await zoomies();
 console.log('zoomies after ~1.5s idle:', afterIdle);
 
 // 4) Visit every tab without crashing
-for (const name of [/Upgrades/, /Automation/, /Director's Cut/, /Achievements/, /Stats/, /Backstage/]) {
+for (const name of [/Upgrades/, /Automation/, /The Revival/, /Achievements/, /Stats/, /Backstage/]) {
   await page.getByRole('button', { name }).first().click();
   await page.waitForTimeout(120);
 }

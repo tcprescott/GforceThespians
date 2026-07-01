@@ -56,7 +56,7 @@ export function TalentTree() {
                       </span>
                     ) : (
                       <span className={`font-semibold tabular-nums ${affordable ? 'text-emerald-300' : 'text-zinc-500'}`}>
-                        🎟️ {formatNumber(cost)}
+                        ⭐ {formatNumber(cost)}
                       </span>
                     )}
                   </div>

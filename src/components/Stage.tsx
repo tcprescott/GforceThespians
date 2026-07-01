@@ -51,7 +51,7 @@ export function Stage() {
         The Stage
       </h2>
 
-      {/* Zoomies — the heartbeat */}
+      {/* Buzz — the heartbeat */}
       <div>
         <div className="flex items-baseline gap-2">
           <span className="text-2xl">{CURRENCY_META.zoomies.symbol}</span>
@@ -60,7 +60,7 @@ export function Stage() {
           </span>
         </div>
         <div className="mt-1 flex items-center gap-2 text-sm">
-          <span className="font-medium text-zinc-300">Zoomies</span>
+          <span className="font-medium text-zinc-300">{CURRENCY_META.zoomies.name}</span>
           <span className="tabular-nums text-emerald-400">{formatRate(rates.zoomies)}</span>
         </div>
       </div>
@@ -72,7 +72,7 @@ export function Stage() {
           <span className="text-2xl font-bold leading-none tabular-nums text-fuchsia-200">
             {formatNumber(state.currencies.bravos)}
           </span>
-          <span className="text-xs text-zinc-500">Bravos</span>
+          <span className="text-xs text-zinc-500">{CURRENCY_META.bravos.name}</span>
           {rates.bravos !== 0 && (
             <span className="text-xs tabular-nums text-emerald-500/80">{formatRate(rates.bravos)}</span>
           )}
@@ -94,17 +94,17 @@ export function Stage() {
           onClick={onDispatch}
           className="group relative w-full select-none rounded-2xl bg-gradient-to-b from-amber-400 to-amber-600 px-6 py-7 text-center text-2xl font-black uppercase tracking-wide text-amber-950 shadow-lg shadow-amber-900/40 transition-transform duration-75 hover:from-amber-300 hover:to-amber-500 active:scale-95"
         >
-          <span className="block text-4xl transition-transform group-active:translate-y-0.5">🎢</span>
-          Dispatch Coaster!
+          <span className="block text-4xl transition-transform group-active:translate-y-0.5">🎭</span>
+          Raise the Curtain!
           <span className="mt-1 block text-sm font-semibold normal-case tracking-normal text-amber-900/80">
-            +{formatNumber(click)} zoomies / launch · or press Space
+            +{formatNumber(click)} Buzz / cue · or press Space
           </span>
         </button>
       </div>
 
       {autoOn && (
         <div className="-mt-2 text-center text-xs text-emerald-400/90">
-          ⚙️ Auto-Dispatcher engaged — launching for you.
+          ⚙️ Auto-Cue engaged — calling cues for you.
         </div>
       )}
 

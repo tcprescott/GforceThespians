@@ -3,14 +3,14 @@ import { HARMONY_MAX } from '../game/balance';
 import { formatNumber } from '../lib/format';
 
 /**
- * Visualizes the Act Three balance between G-Force and Dramatic Tension and the
- * resulting global multiplier. A centered marker = harmony = peak output.
+ * Visualizes the Act Three balance between Comedy and Tragedy and the resulting
+ * global multiplier. A centered marker = harmony = peak output.
  */
 export function HarmonyMeter({ harmony, state }: { harmony: number; state: GameState }) {
   const g = state.currencies.gforce;
   const t = state.currencies.tension;
   const total = g + t;
-  // 0 = all G-Force, 1 = all Tension, 0.5 = balanced. Guard against Infinity
+  // 0 = all Comedy, 1 = all Tragedy, 0.5 = balanced. Guard against Infinity
   // (Infinity/Infinity = NaN would produce `left: NaN%`).
   const split = Number.isFinite(total) && total > 0 ? Math.min(1, Math.max(0, t / total)) : 0.5;
   const quality = harmony / HARMONY_MAX; // 0..1
@@ -34,11 +34,11 @@ export function HarmonyMeter({ harmony, state }: { harmony: number; state: GameS
         />
       </div>
       <div className="mt-1 flex justify-between text-[10px] text-zinc-500">
-        <span>🌀 G-Force {formatNumber(g)}</span>
-        <span>{formatNumber(t)} Tension 🎻</span>
+        <span>😄 Comedy {formatNumber(g)}</span>
+        <span>{formatNumber(t)} Tragedy 😢</span>
       </div>
       <p className="mt-2 text-[11px] leading-snug text-zinc-500">
-        Keep G-Force and Tension balanced to amplify <em>all</em> production. Skew too far and the
+        Keep Comedy and Tragedy balanced to amplify <em>all</em> production. Skew too far and the
         show wobbles.
       </p>
     </div>

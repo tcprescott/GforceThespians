@@ -33,7 +33,7 @@ export interface GameStore extends GameState {
   offlineSummary: OfflineSummary;
   /** UI: how many units a generator's Buy button purchases. */
   buyMode: BuyMode;
-  /** The currently-running "Cats Improvise" event, if any. */
+  /** The currently-running "The Company Improvises" event, if any. */
   activeEvent: ActiveEvent | null;
   /** Epoch ms when the next event may fire. */
   nextEventAt: number;

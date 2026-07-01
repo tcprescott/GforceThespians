@@ -21,7 +21,7 @@ export function DirectorsCut() {
     const phase = PHASE_META[PRESTIGE_PHASE];
     return (
       <div className="rounded-xl border border-dashed border-emerald-500/30 bg-emerald-500/[0.03] p-6 text-center">
-        <p className="text-2xl">🎟️</p>
+        <p className="text-2xl">⭐</p>
         <h3 className="mt-1 text-lg font-bold text-emerald-300">{phase.name}</h3>
         <p className="mx-auto mt-2 max-w-md text-sm text-zinc-400">{phase.blurb}</p>
         {req && (
@@ -45,8 +45,8 @@ export function DirectorsCut() {
     if (!ready) return;
     if (
       window.confirm(
-        `Roll the credits? This resets your run (currencies, generators, upgrades, phase progress) ` +
-          `but banks ${pending.toLocaleString()} Rider Credits and keeps every talent, artifact, blueprint, and achievement.`,
+        `Take your final bow? This strikes the set (currencies, generators, upgrades, phase progress) ` +
+          `but banks ${pending.toLocaleString()} Legacy and keeps every talent, artifact, blueprint, and achievement.`,
       )
     ) {
       prestige();
@@ -59,11 +59,11 @@ export function DirectorsCut() {
       <section className="rounded-xl border border-emerald-500/30 bg-gradient-to-b from-emerald-500/10 to-transparent p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="text-lg font-black text-emerald-200">🎟️ The Director's Cut</h3>
+            <h3 className="text-lg font-black text-emerald-200">⭐ The Revival</h3>
             <p className="text-xs text-zinc-400">
               You hold{' '}
               <span className="font-bold text-emerald-300">{formatNumber(state.riderCredits)}</span>{' '}
-              Rider Credits · {state.stats.prestiges} cuts directed
+              Legacy · {state.stats.prestiges} revivals staged
             </p>
           </div>
           <div className="text-right">
@@ -72,7 +72,7 @@ export function DirectorsCut() {
               disabled={!ready}
               className="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-black text-emerald-950 enabled:hover:bg-emerald-400 disabled:cursor-not-allowed disabled:bg-zinc-700/60 disabled:text-zinc-500"
             >
-              Roll Credits {pending > 0 ? `(+${formatNumber(pending)})` : ''}
+              Take Your Bow {pending > 0 ? `(+${formatNumber(pending)})` : ''}
             </button>
             {!ready && (
               <p className="mt-1 max-w-[14rem] text-[10px] text-zinc-500">

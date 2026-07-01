@@ -23,10 +23,10 @@ export function StatsPanel() {
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
         <Stat label="Current Act" value={`${state.phaseUnlocked} · ${PHASE_META[Math.min(state.phaseUnlocked, 6)].name}`} />
-        <Stat label="Director's Cuts" value={formatInt(state.stats.prestiges)} />
-        <Stat label="Rider Credits" value={formatNumber(state.riderCredits)} />
+        <Stat label="Revivals" value={formatInt(state.stats.prestiges)} />
+        <Stat label="Legacy" value={formatNumber(state.riderCredits)} />
         <Stat label="Playtime" value={formatDuration(state.stats.playtimeSeconds)} />
-        <Stat label="Total Dispatches" value={formatInt(state.stats.totalClicks)} />
+        <Stat label="Total Cues" value={formatInt(state.stats.totalClicks)} />
         <Stat label="Generators Owned" value={formatInt(totalGeneratorsOwned(state))} />
         <Stat label="Achievements" value={`${state.achievements.length}/${ACHIEVEMENTS.length}`} />
         <Stat label="Global Multiplier" value={`×${formatNumber(globalPower)}`} />

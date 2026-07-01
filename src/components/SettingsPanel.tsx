@@ -37,7 +37,7 @@ export function SettingsPanel() {
   const doReset = () => {
     if (
       window.confirm(
-        'Strike the entire set? This permanently wipes ALL progress — Rider Credits, talents, artifacts, achievements, everything. No undo.',
+        'Strike the entire set? This permanently wipes ALL progress — Legacy, talents, artifacts, achievements, everything. No undo.',
       )
     ) {
       hardReset();

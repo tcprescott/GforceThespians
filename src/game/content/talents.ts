@@ -1,7 +1,7 @@
 import type { TalentDef } from '../types';
 
 // ===========================================================================
-// The Talent Tree — spent in the Director's Cut with Rider Credits. Talents are
+// The Talent Tree — spent in The Revival with Legacy. Talents are
 // PERSISTENT: they survive every reset and compound across runs. Ranked, with a
 // few prerequisite chains so there's a tree to climb. Effects scale with rank:
 //   • multiplicative effects (genMult/currencyMult/globalMult/clickMult/...) use
@@ -35,7 +35,7 @@ export const TALENTS: TalentDef[] = [
   {
     id: 't-muscle-memory',
     name: 'Muscle Memory',
-    description: 'Every rank: Dispatch power ×2 and +5 flat. For when you feel like clicking.',
+    description: 'Every rank: Cue power ×2 and +5 flat. For when you feel like clicking.',
     tier: 0,
     maxRank: 6,
     baseCost: 1,
@@ -49,8 +49,8 @@ export const TALENTS: TalentDef[] = [
   // Tier 1
   {
     id: 't-full-tanks',
-    name: 'Full Tanks',
-    description: 'Every rank: Kibble production ×1.4. Never starve your machines again.',
+    name: 'Full Urns',
+    description: 'Every rank: Coffee production ×1.4. Never starve your crew again.',
     tier: 1,
     maxRank: 8,
     baseCost: 3,
@@ -61,7 +61,7 @@ export const TALENTS: TalentDef[] = [
   {
     id: 't-method-school',
     name: 'The Method School',
-    description: 'Every rank: G-Force ×1.35 and Tension ×1.35. Feeling and force, in lockstep.',
+    description: 'Every rank: Comedy ×1.35 and Tragedy ×1.35. Laughter and tears, in lockstep.',
     tier: 1,
     maxRank: 8,
     baseCost: 4,
@@ -87,8 +87,8 @@ export const TALENTS: TalentDef[] = [
   // Tier 2
   {
     id: 't-lunar-resonance',
-    name: 'Lunar Resonance',
-    description: 'Every rank: Moonlight ×1.5. The dark hums your name.',
+    name: 'Limelight Resonance',
+    description: 'Every rank: Limelight ×1.5. The dark hums your name.',
     tier: 2,
     maxRank: 8,
     baseCost: 12,
@@ -122,8 +122,8 @@ export const TALENTS: TalentDef[] = [
   // Tier 3 — the crown
   {
     id: 't-rider-royalties',
-    name: 'Rider Royalties',
-    description: 'Every rank: Rider Credits earned on prestige ×1.5. Get paid to end the world.',
+    name: 'Royalties',
+    description: 'Every rank: Legacy earned on prestige ×1.5. Get paid to end the world.',
     tier: 3,
     maxRank: 8,
     baseCost: 40,
@@ -144,7 +144,7 @@ export const TALENTS: TalentDef[] = [
   },
 
   // Tier 4 — the endless encore. No practical ceiling: this is where the
-  // snowball lives forever, absorbing every Rider Credit you'll ever earn and
+  // snowball lives forever, absorbing every point of Legacy you'll ever earn and
   // keeping the marathon a marathon. Because the Rising Wall tracks your power,
   // ranking this up raises the bar in lockstep — you grow, the show grows.
   {
@@ -164,8 +164,8 @@ export const TALENTS: TalentDef[] = [
 
   {
     id: 't-airtime-addict',
-    name: 'Airtime Addict',
-    description: 'Every rank: Zoomies ×1.3. The pure stuff.',
+    name: 'Buzz Junkie',
+    description: 'Every rank: Buzz ×1.3. The pure stuff.',
     tier: 1,
     maxRank: 8,
     baseCost: 3,
@@ -176,7 +176,7 @@ export const TALENTS: TalentDef[] = [
   {
     id: 't-prop-master',
     name: 'Prop Master',
-    description: 'Every rank: every generator ×1.15. A rising tide lifts all coasters.',
+    description: 'Every rank: every generator ×1.15. A rising tide lifts all productions.',
     tier: 1,
     maxRank: 8,
     baseCost: 4,
@@ -198,7 +198,7 @@ export const TALENTS: TalentDef[] = [
   {
     id: 't-prime-time',
     name: 'Prime Time',
-    description: 'Every rank: Dispatch ×3 and +50 flat. For the hands-on impresario.',
+    description: 'Every rank: Cue ×3 and +50 flat. For the hands-on impresario.',
     tier: 2,
     maxRank: 5,
     baseCost: 9,
@@ -212,7 +212,7 @@ export const TALENTS: TalentDef[] = [
   {
     id: 't-residuals',
     name: 'Residual Checks',
-    description: 'Every rank: Rider Credits earned ×1.3. Cheaper royalties, sooner.',
+    description: 'Every rank: Legacy earned ×1.3. Cheaper royalties, sooner.',
     tier: 2,
     maxRank: 6,
     baseCost: 9,

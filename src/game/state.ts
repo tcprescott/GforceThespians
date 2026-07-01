@@ -48,7 +48,7 @@ export interface GameState {
   /** Epoch ms when the state was last "seen" (for offline progress). */
   lastSeen: number;
   /**
-   * Transient global multiplier from a currently-active "Cats Improvise" event
+   * Transient global multiplier from a currently-active "The Company Improvises" event
    * (1 = none). Set by the store during active play; the pure engine only reads
    * it, so the simulator (which never sets it) stays deterministic. Not persisted.
    */
@@ -58,7 +58,7 @@ export interface GameState {
 export const MAX_LOG_ENTRIES = 140;
 
 const INTRO_NOTE =
-  'The curtain rises on a beige living room. A desk-lamp spotlight hums to life. Somewhere, a cat clears its throat.';
+  'The curtain rises on a beige living room. A desk-lamp spotlight hums to life. Somewhere in the wings, the lead clears her throat.';
 
 /** A zeroed bag of every currency. */
 export function zeroBag(): CurrencyBag {

@@ -2,7 +2,7 @@ import { useGameStore } from '../game/store';
 import { hasAutomation } from '../game/engine';
 import { AUTOMATIONS, GENERATOR_META, GENERATORS } from '../game/content';
 
-/** Middle tab — Automation & Logic Gates (unlocked via Director's Cut blueprints). */
+/** Middle tab — Automation & Logic Gates (unlocked via Revival blueprints). */
 export function AutomationPanel() {
   const state = useGameStore();
   const toggleAutoDispatch = useGameStore((s) => s.toggleAutoDispatch);
@@ -19,8 +19,8 @@ export function AutomationPanel() {
 
   const lockNote = (
     <p className="mt-1 text-xs text-zinc-500">
-      🔒 Locked — unlock the matching blueprint in the{' '}
-      <span className="text-emerald-300">Director's Cut</span>.
+      🔒 Locked — unlock the matching blueprint in{' '}
+      <span className="text-emerald-300">The Revival</span>.
     </p>
   );
 
@@ -28,7 +28,7 @@ export function AutomationPanel() {
     <div className="flex flex-col gap-4">
       <p className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 text-xs text-zinc-400">
         Automation is the idle endgame: set it and the show runs itself. Everything here is unlocked
-        permanently via blueprints in the Director's Cut.
+        permanently via blueprints in The Revival.
       </p>
 
       {/* Auto-Dispatcher */}

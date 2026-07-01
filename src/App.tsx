@@ -21,10 +21,10 @@ import { HelpModal } from './components/HelpModal';
 type Tab = 'backstage' | 'upgrades' | 'automation' | 'cut' | 'achievements' | 'stats' | 'settings';
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: 'backstage', label: '🎢 Backstage' },
+  { key: 'backstage', label: '🎭 Backstage' },
   { key: 'upgrades', label: '⬆️ Upgrades' },
   { key: 'automation', label: '⚙️ Automation' },
-  { key: 'cut', label: "🎟️ Director's Cut" },
+  { key: 'cut', label: '⭐ The Revival' },
   { key: 'achievements', label: '🏆 Achievements' },
   { key: 'stats', label: '📊 Stats' },
   { key: 'settings', label: '⚙️ Settings' },
@@ -55,7 +55,7 @@ export default function App() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <div className="flex items-center gap-3">
             <h1 className="text-xl font-black tracking-tight text-amber-200 sm:text-2xl">
-              🎭 The G-Force Thespians
+              🎭 Curtain Call
             </h1>
             <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${accent.chip}`}>
               {phase.act}: {phase.name}
@@ -122,8 +122,8 @@ export default function App() {
       {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
 
       <footer className="border-t border-zinc-800/60 px-4 py-3 text-center text-xs text-zinc-600">
-        {prestiges > 0 && <span>{prestiges} Director's Cuts · </span>}
-        React + Zustand + Tailwind · an absurd idle production in 5 acts
+        {prestiges > 0 && <span>{prestiges} Revivals · </span>}
+        React + Zustand + Tailwind · an absurd idle production in six acts
       </footer>
 
       <OfflineModal />

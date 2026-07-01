@@ -17,7 +17,7 @@ export function UpgradesPanel() {
     <div className="flex flex-col gap-6">
       <p className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 text-xs text-zinc-400">
         Upgrades are your run's identity. <span className="text-amber-300">Forks</span> let you pick
-        exactly one path — chosen for this run and reset on a Director's Cut, so every reset is a
+        exactly one path — chosen for this run and reset on a Revival, so every reset is a
         chance to build differently.
       </p>
 

@@ -34,7 +34,7 @@ export function BlueprintsPanel() {
                 <span className="shrink-0 text-xs font-bold text-cyan-300">Installed</span>
               ) : (
                 <span className="shrink-0 text-xs font-semibold tabular-nums text-emerald-300">
-                  🎟️ {formatNumber(b.cost)}
+                  ⭐ {formatNumber(b.cost)}
                 </span>
               )}
             </div>

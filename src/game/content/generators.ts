@@ -1,26 +1,27 @@
 import type { GeneratorDef } from '../types';
 
 // ===========================================================================
-// Generators across all four content phases.
+// Generators across all five content acts.
 //
 // Currency flows are intentionally interlocked so the player keeps making
 // decisions:
-//   • Phase 1: zoomies (kinetic) + bravos (acclaim from actors/props).
-//   • Phase 2: Kibble FUEL — some buildings make it, some burn it. Over-build
-//     consumers and they starve. Balance is the game.
-//   • Phase 3: G-Force vs Dramatic Tension — kept in harmony, everything sings.
-//   • Phase 4: Moonlight — the gateway resonance to the Director's Cut.
+//   • Act 1: Buzz (audience electricity) + Bravos (acclaim from props/cast).
+//   • Act 2: Coffee FUEL — some rooms make it, some burn it. Over-build the
+//     consumers and the crew starves. Balance is the game.
+//   • Act 3: Comedy vs Tragedy — the two masks; kept in harmony, everything sings.
+//   • Act 4: Limelight — the gateway resonance to the later acts.
+//   • Act 5: Echoes — the self-referential meta-theatre.
 //
 // Base numbers here are a starting point; the headless simulator (scripts/sim.ts)
 // is used to tune them for marathon-idle pacing.
 // ===========================================================================
 
 export const GENERATORS: GeneratorDef[] = [
-  // --- Phase 1: The Mundane ------------------------------------------------
+  // --- Act 1: The Mundane --------------------------------------------------
   {
     id: 'p1-cardboard-hill',
-    name: 'Cardboard Hill',
-    description: 'A lift hill carved from a delivery box. Humble. Reliable. Slightly damp.',
+    name: 'Cardboard Flat',
+    description: 'A painted cardboard flat propped against the sofa. Humble. Reliable. Slightly damp.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 10,
@@ -29,8 +30,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p1-sofa-airtime',
-    name: 'Sofa Cushion Airtime',
-    description: 'Launch off the loveseat for a glorious half-second of feline weightlessness.',
+    name: 'Sofa Front Row',
+    description: 'Loveseat cushions arranged into a front row. Every seat sold (to relatives).',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 110,
@@ -39,8 +40,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p1-understudy-tabby',
-    name: 'Understudy Tabby',
-    description: 'A nervous tabby who has memorized everyone’s lines. Generates pure acclaim.',
+    name: 'The Understudy',
+    description: 'A nervous understudy who has memorized everyone’s lines, including the cut ones. Generates pure acclaim.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 650,
@@ -49,8 +50,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p1-yarn-catapult',
-    name: 'Yarn Catapult',
-    description: 'Converts a ball of yarn into terrifying lateral Gs. The cats adore it.',
+    name: 'Confetti Cannon',
+    description: 'Converts a spool of ribbon into a terrifying blast of streamers. The cast adores it.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 1400,
@@ -70,7 +71,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p1-matinee-troupe',
     name: 'Matinee Troupe',
-    description: 'Hire a whole troupe with your acclaim; they pack the house and dispatch coasters.',
+    description: 'Hire a whole troupe with your acclaim; they pack the house and take the stage.',
     phase: 1,
     costCurrency: 'bravos',
     baseCost: 40,
@@ -79,8 +80,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p1-cardboard-loop',
-    name: 'Cardboard Loop',
-    description: 'A full inversion held together by tape and sheer narrative will.',
+    name: 'Painted Backdrop',
+    description: 'A full painted backdrop held up by tape and sheer narrative will.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 16000,
@@ -88,11 +89,11 @@ export const GENERATORS: GeneratorDef[] = [
     output: { zoomies: 260 },
   },
 
-  // --- Phase 2: The Escalation (Kibble fuel) -------------------------------
+  // --- Act 2: The Escalation (Coffee fuel) ---------------------------------
   {
     id: 'p2-kibble-dispenser',
-    name: 'Kibble Dispenser',
-    description: 'A clattering hopper of fuel pellets. The backbone of all automation.',
+    name: 'Coffee Urn',
+    description: 'A clattering urn of crew-grade coffee. The backbone of all automation.',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 2e5,
@@ -101,8 +102,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-litterbox-roomba',
-    name: 'Litterbox Roomba',
-    description: 'Self-cleaning, self-dispatching. Sips Kibble, returns a torrent of zoomies.',
+    name: 'Roving Stagehand',
+    description: 'Self-directing, tireless. Sips Coffee, returns a torrent of Buzz.',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 3.4e5,
@@ -112,8 +113,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-catnip-greenhouse',
-    name: 'Catnip Greenhouse',
-    description: 'Industrial morale, photosynthesized. Big Kibble output, lightly hallucinogenic.',
+    name: 'Green Room',
+    description: 'Industrial morale, brewed and catered. Big Coffee output, faint smell of hairspray.',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 2.1e6,
@@ -122,8 +123,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-timber-coaster',
-    name: 'Backyard Timber Coaster',
-    description: 'Real wood, real splinters, real airtime. Hungry for fuel.',
+    name: 'Hand-Built Proscenium',
+    description: 'Real wood, real splinters, real drama. Hungry for Coffee.',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 1.3e6,
@@ -133,8 +134,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-press-agent',
-    name: 'Feline Press Agent',
-    description: 'Spins every derailment into a triumph. Converts acclaim into more acclaim.',
+    name: 'Press Agent',
+    description: 'Spins every flubbed line into a triumph. Converts acclaim into more acclaim.',
     phase: 2,
     costCurrency: 'bravos',
     baseCost: 2200,
@@ -143,8 +144,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-conveyor-feeder',
-    name: 'Conveyor Feeder',
-    description: 'A ravenous automated dispatch line. Astonishing output, astonishing appetite.',
+    name: 'Overnight Crew',
+    description: 'A ravenous automated stage crew. Astonishing output, astonishing appetite.',
     phase: 2,
     costCurrency: 'kibble',
     baseCost: 5200,
@@ -153,11 +154,11 @@ export const GENERATORS: GeneratorDef[] = [
     consumes: { kibble: 9 },
   },
 
-  // --- Phase 3: The Absurd (G-Force vs Dramatic Tension) -------------------
+  // --- Act 3: The Absurd (Comedy vs Tragedy) -------------------------------
   {
     id: 'p3-strata-coaster',
-    name: 'Strata-Coaster',
-    description: 'Pierces the clouds. Produces G-Force and Tension in perfect, balanced measure.',
+    name: 'The Main Stage',
+    description: 'Pierces the very ceiling of the artform. Produces Comedy and Tragedy in perfect, balanced measure.',
     phase: 3,
     costCurrency: 'zoomies',
     baseCost: 5e8,
@@ -166,8 +167,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-gforce-pylon',
-    name: 'G-Force Pylon',
-    description: 'Pure crushing acceleration. Skews the balance toward force — use with intent.',
+    name: 'Comedy Cannon',
+    description: 'Pure, crushing hilarity. Skews the balance toward Comedy — use with intent.',
     phase: 3,
     costCurrency: 'zoomies',
     baseCost: 9e8,
@@ -176,8 +177,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-tension-orchestra',
-    name: 'Tension Orchestra',
-    description: 'A pit of cats with tiny violins. Skews the balance toward feeling.',
+    name: 'Tragedy Orchestra',
+    description: 'A pit of violinists with tiny, devastating bows. Skews the balance toward Tragedy.',
     phase: 3,
     costCurrency: 'bravos',
     baseCost: 5e5,
@@ -186,8 +187,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-inertia-flywheel',
-    name: 'Inertia Flywheel',
-    description: 'Spend hoarded G-Force to fling coasters into staggering zoomie output.',
+    name: 'Slapstick Flywheel',
+    description: 'Spend hoarded Comedy to fling the ensemble into staggering Buzz.',
     phase: 3,
     costCurrency: 'gforce',
     baseCost: 2200,
@@ -196,8 +197,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-method-actor',
-    name: 'Method-Actor Cat',
-    description: 'Spends Tension to deliver performances that detonate the box office.',
+    name: 'Method Actor',
+    description: 'Spends Tragedy to deliver performances that detonate the box office.',
     phase: 3,
     costCurrency: 'tension',
     baseCost: 2200,
@@ -206,8 +207,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-harmonic-loop',
-    name: 'Harmonic Loop',
-    description: 'A figure-eight that breathes. Generates force and feeling together, abundantly.',
+    name: 'The Tragicomedy',
+    description: 'A play that breathes between laughter and tears. Generates Comedy and Tragedy together, abundantly.',
     phase: 3,
     costCurrency: 'zoomies',
     baseCost: 1.1e10,
@@ -215,11 +216,11 @@ export const GENERATORS: GeneratorDef[] = [
     output: { gforce: 420, tension: 420, zoomies: 6e7 },
   },
 
-  // --- Phase 4: Interstellar (Moonlight) -----------------------------------
+  // --- Act 4: Interstellar (Limelight) -------------------------------------
   {
     id: 'p4-giga-coaster',
-    name: 'Giga-Coaster',
-    description: 'Leaves the atmosphere. Burns Kibble like a rocket, returns the first Moonlight.',
+    name: 'Command Performance',
+    description: 'The show leaves the atmosphere to play for the cosmos. Burns Coffee like a rocket, returns the first Limelight.',
     phase: 4,
     costCurrency: 'zoomies',
     baseCost: 1e14,
@@ -229,8 +230,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p4-moon-lasso',
-    name: 'Moon Lasso',
-    description: 'Wraps a coaster clean around the moon. Spend G-Force, harvest Moonlight.',
+    name: 'Lunar Curtain Call',
+    description: 'A bow so grand the moon returns for it. Spend Comedy, harvest Limelight.',
     phase: 4,
     costCurrency: 'gforce',
     baseCost: 5.5e5,
@@ -240,7 +241,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p4-black-hole-aria',
     name: 'Black-Hole Aria',
-    description: 'The cats sing into the event horizon. The reverb is worth unspeakable acclaim.',
+    description: 'The ensemble sings a high C into the event horizon. The reverb is worth unspeakable acclaim.',
     phase: 4,
     costCurrency: 'tension',
     baseCost: 5.5e5,
@@ -249,8 +250,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p4-orbital-litterbox',
-    name: 'Orbital Litterbox',
-    description: 'A moon-sized fuel refinery. Spend Moonlight; rain Kibble and zoomies back down.',
+    name: 'Orbital Green Room',
+    description: 'A moon-sized catering satellite. Spend Limelight; rain Coffee and Buzz back down.',
     phase: 4,
     costCurrency: 'moonlight',
     baseCost: 55,
@@ -260,7 +261,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p4-singing-comet',
     name: 'Singing Comet',
-    description: 'A comet on a season pass. Loops the system, compounding its own Moonlight.',
+    description: 'A comet on a residency. Loops the system, compounding its own Limelight.',
     phase: 4,
     costCurrency: 'moonlight',
     baseCost: 220,
@@ -269,7 +270,7 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p4-nebula-amphitheater',
-    name: 'Nebula Amphitheater',
+    name: 'Nebula Amphitheatre',
     description: 'Seats ten billion. Produces everything at once because, frankly, it can.',
     phase: 4,
     costCurrency: 'zoomies',
@@ -283,11 +284,11 @@ export const GENERATORS: GeneratorDef[] = [
   // props appear after its originals.)
   // =========================================================================
 
-  // --- Phase 1 extras ------------------------------------------------------
+  // --- Act 1 extras --------------------------------------------------------
   {
     id: 'p1-curtain-rig',
     name: 'Velvet Curtain Rig',
-    description: 'A proper curtain on a pulley. Drama doubles as airtime; the cats demand a fog machine.',
+    description: 'A proper velvet curtain on a pulley. Drama doubles as spectacle; the cast demands a fog machine.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 42000,
@@ -296,7 +297,7 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p1-prima-donna',
-    name: 'Prima Donna Persian',
+    name: 'Prima Donna',
     description: 'A diva who will only perform stage-left, in soft lighting. Pure, demanding acclaim.',
     phase: 1,
     costCurrency: 'zoomies',
@@ -307,7 +308,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p1-grand-finale',
     name: 'Living-Room Grand Finale',
-    description: 'Every cushion, every cat, every cardboard inch — one enormous closing number.',
+    description: 'Every cushion, every prop, every square inch of carpet — one enormous closing number.',
     phase: 1,
     costCurrency: 'zoomies',
     baseCost: 380000,
@@ -315,11 +316,11 @@ export const GENERATORS: GeneratorDef[] = [
     output: { zoomies: 4200 },
   },
 
-  // --- Phase 2 extras ------------------------------------------------------
+  // --- Act 2 extras --------------------------------------------------------
   {
     id: 'p2-treat-printer',
-    name: 'Industrial Treat Printer',
-    description: 'Prints Kibble by the pallet. Smells incredible. Legally a "morale device".',
+    name: 'Catering Truck',
+    description: 'Prints Coffee and sandwiches by the pallet. Legally a "morale device".',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 8e6,
@@ -328,8 +329,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-scratch-skyscraper',
-    name: 'Scratching-Post Skyscraper',
-    description: 'Forty storeys of sisal and screaming descents. Burns fuel; prints acclaim.',
+    name: 'Fly Tower',
+    description: 'Forty storeys of rigging and screaming set-changes. Burns Coffee; prints acclaim.',
     phase: 2,
     costCurrency: 'zoomies',
     baseCost: 1.4e7,
@@ -339,8 +340,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p2-robo-ringmaster',
-    name: 'Robo-Ringmaster',
-    description: 'An animatronic top hat that runs the whole yard. Voracious, but magnificent.',
+    name: 'Robo-Stage-Manager',
+    description: 'An animatronic clipboard that runs the whole house. Voracious, but magnificent.',
     phase: 2,
     costCurrency: 'kibble',
     baseCost: 22000,
@@ -349,11 +350,11 @@ export const GENERATORS: GeneratorDef[] = [
     consumes: { kibble: 22 },
   },
 
-  // --- Phase 3 extras (cross-feed coasters help you hold harmony) ----------
+  // --- Act 3 extras (cross-feed levers help you hold harmony) --------------
   {
     id: 'p3-vertigo-tower',
-    name: 'Vertigo Tower',
-    description: 'So tall the cats can see next Tuesday. Generates force and feeling in lockstep.',
+    name: 'The Upper Circle',
+    description: 'So high the ensemble can see next Tuesday. Generates Comedy and Tragedy in lockstep.',
     phase: 3,
     costCurrency: 'zoomies',
     baseCost: 6e10,
@@ -362,8 +363,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p3-cliffhanger-rig',
-    name: 'Cliffhanger Rig',
-    description: 'Converts hoarded G-Force into Tension (and a fortune) — a lever to re-balance the act.',
+    name: 'Cliffhanger',
+    description: 'Converts hoarded Comedy into Tragedy (and a fortune) — a lever to re-balance the act.',
     phase: 3,
     costCurrency: 'gforce',
     baseCost: 9000,
@@ -373,7 +374,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p3-soliloquy-engine',
     name: 'Soliloquy Engine',
-    description: 'Converts hoarded Tension into G-Force (and a fortune) — the other lever. Balance at will.',
+    description: 'Converts hoarded Tragedy into Comedy (and a fortune) — the other lever. Balance at will.',
     phase: 3,
     costCurrency: 'tension',
     baseCost: 9000,
@@ -381,11 +382,11 @@ export const GENERATORS: GeneratorDef[] = [
     output: { gforce: 620, zoomies: 4e8 },
   },
 
-  // --- Phase 4 extras ------------------------------------------------------
+  // --- Act 4 extras --------------------------------------------------------
   {
     id: 'p4-wormhole-junction',
-    name: 'Wormhole Junction',
-    description: 'A coaster that exits before it enters. Produces everything, including paradoxes.',
+    name: 'Wormhole Wings',
+    description: 'A backstage corridor that exits before it enters. Produces everything, including paradoxes.',
     phase: 4,
     costCurrency: 'zoomies',
     baseCost: 6e16,
@@ -394,8 +395,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p4-galactic-tour-bus',
-    name: 'Galactic Tour Bus',
-    description: 'Season-pass holders ride the whole arm of the galaxy. Spend G-Force, reap Moonlight & raves.',
+    name: 'Galactic Touring Company',
+    description: 'Residency-holders tour the whole arm of the galaxy. Spend Comedy, reap Limelight & raves.',
     phase: 4,
     costCurrency: 'gforce',
     baseCost: 2e6,
@@ -405,7 +406,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p4-supernova-encore',
     name: 'Supernova Encore',
-    description: 'For the curtain call, a star. Compounds its own Moonlight in a blinding crescendo.',
+    description: 'For the curtain call, a star. Compounds its own Limelight in a blinding crescendo.',
     phase: 4,
     costCurrency: 'moonlight',
     baseCost: 800,
@@ -413,7 +414,7 @@ export const GENERATORS: GeneratorDef[] = [
     output: { moonlight: 110, zoomies: 2e13 },
   },
 
-  // --- Phase 5: The Ouroboros (Echoes; some engines burn Moonlight) --------
+  // --- Act 5: The Ouroboros (Echoes; some engines burn Limelight) ----------
   {
     id: 'p5-mirror-stage',
     name: 'Mirror Stage',
@@ -427,7 +428,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p5-hall-of-mirrors',
     name: 'Hall of Mirrors',
-    description: 'Infinite reflections, infinite encores. Folds Moonlight into pure recursion.',
+    description: 'Infinite reflections, infinite encores. Folds Limelight into pure recursion.',
     phase: 5,
     costCurrency: 'zoomies',
     baseCost: 9e18,
@@ -448,7 +449,7 @@ export const GENERATORS: GeneratorDef[] = [
   {
     id: 'p5-fourth-wall',
     name: 'Fourth-Wall Breaker',
-    description: 'Spend Echoes to address the audience directly — they rain back zoomies and fresh Moonlight.',
+    description: 'Spend Echoes to address the audience directly — they rain back Buzz and fresh Limelight.',
     phase: 5,
     costCurrency: 'echoes',
     baseCost: 2000,
@@ -467,8 +468,8 @@ export const GENERATORS: GeneratorDef[] = [
   },
   {
     id: 'p5-ouroboros-coaster',
-    name: 'Ouroboros Coaster',
-    description: 'The track is a closed loop that is also the story that is also the track. It produces everything, including itself.',
+    name: 'The Ouroboros',
+    description: 'The stage is a closed loop that is also the story that is also the stage. It produces everything, including itself.',
     phase: 5,
     costCurrency: 'zoomies',
     baseCost: 1e21,

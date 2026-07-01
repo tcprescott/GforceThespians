@@ -1,5 +1,5 @@
 // ===========================================================================
-// The G-Force Thespians — core type vocabulary
+// Curtain Call — core type vocabulary
 //
 // The whole game is data-driven: balances live in the store, definitions live
 // in `content/`, and the engine (`engine.ts`) is a set of PURE functions over
